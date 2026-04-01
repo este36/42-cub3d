@@ -5,7 +5,7 @@ PROJECT_DIR		= $(shell pwd)
 LIBFT_DIR		= libft
 LIBFT			= $(LIBFT_DIR)/libft.a
 CFLAGS			= -Wall -Wextra -Werror -g
-INCLUDE			= -I$(LIBFT_DIR) -I$(MINILIBX_DIR)/include -Iinclude
+INCLUDE			= -I$(LIBFT_DIR) -I$(MINILIBX_DIR) -Iinclude
 LDFLAGS			= -lm -lXext -lX11 -lmlx -L$(MINILIBX_DIR)
 MLX_CFLAGS		= CFLAGS='-O3 --std=gnu89'
 
