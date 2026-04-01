@@ -1,0 +1,20 @@
+# .github/workflows/main.yml
+on: [push, pull_request]
+
+jobs:
+  norminette_job:
+    runs-on: ubuntu-latest
+    name: Norminette
+    steps:
+    - uses: actions/checkout@v2
+    - uses: alexandregv/norminette-action@v3
+      with:
+        flags: '.'
+
+  compile_job:
+    runs-on: ubuntu-latest
+    name: Compilation
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build
+      run: make
