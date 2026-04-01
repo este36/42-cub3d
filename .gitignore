@@ -1,0 +1,5 @@
+minilibx*
+*.o
+*.a
+*.out
+*.txt
