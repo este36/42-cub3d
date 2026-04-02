@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_text.c                                        :+:      :+:    :+:   */
+/*   put_pixel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/02 20:02:46 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/02 21:59:24 by emercier         ###   ########.fr       */
+/*   Created: 2026/04/02 20:51:34 by emercier          #+#    #+#             */
+/*   Updated: 2026/04/02 20:57:43 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "window.h"
+#include "image.h"
 #include "mlx.h"
 
-int		draw_text(t_window *w, int x, int y, const char *text)
+void	put_pixel(t_image *img, int x, int y, t_color color)
 {
-	return (mlx_string_put(w->mlx, w->ptr, x, y, w->font_color, (char *)text));
+	const size_t	offset = y * img->line_len + x * img->bytes_pp;
+	const int		c = mlx_get_color_value(img->mlx, (int)color);
+
+	*(unsigned int *)(img->data + offset) = c;
 }

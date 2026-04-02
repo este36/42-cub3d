@@ -11,8 +11,13 @@ MLX_CFLAGS		= CFLAGS='-O3 --std=gnu89'
 
 SRCS			= src/main.c\
 				  src/window/create_window.c\
+				  src/window/win_init_hooks.c\
 				  src/window/show_window.c\
 				  src/window/destroy_window.c\
+				  src/window/put_pixel.c\
+				  src/window/draw_rectangle.c\
+				  src/window/draw_text.c\
+				  src/window/msgbox.c\
 
 OBJS=$(SRCS:src/%.c=obj/%.o)
 

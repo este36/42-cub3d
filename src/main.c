@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 19:02:47 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/02 18:58:47 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/02 21:19:06 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,7 @@ int	render(t_window *w)
 
 int	main(int argc, char **argv)
 {
-	t_window	w;
-
 	(void)argc;
 	(void)argv;
-	ft_bzero(&w, sizeof(w));
-	if (create_window(&w) != 0)
-		return (1);
-	w.main_loop = render;
-	if (show_window(&w) != 0)
-		return (1);
-	destroy_window(&w);
+	msgbox(MSGBOX_OK, "hey");
 }

@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 17:54:21 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/02 20:05:47 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/02 20:54:24 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct s_point
 
 typedef struct s_image
 {
+	void	*mlx;
 	void	*ptr;
 	char	*data;
 	int		width;
@@ -52,8 +53,8 @@ typedef struct s_line
 	t_color	color;
 }	t_line;
 
-void	put_pixel(t_image *i, int x, int y, t_color color);
-void	draw_rectangle(t_image *i, t_rectangle *rectangle);
-void	draw_line(t_image *i, t_line *line);
+void	put_pixel(t_image *img, int x, int y, t_color color);
+void	draw_rectangle(t_image *img, t_rectangle *rectangle);
+void	draw_line(t_image *img, t_line *line);
 
 #endif //  IMAGE_H

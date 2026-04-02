@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 12:21:31 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/02 20:04:39 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/02 21:57:35 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,9 @@ typedef struct s_window
 	char				*title;
 	int					should_close;
 	size_t				frame;
-	t_color				font_color;
 	t_image				screen;
+	t_color				font_color;
+	t_point				mouse;
 	t_main_loop_cb		main_loop;
 	t_on_destroy_cb		on_destroy;
 	t_key_hook			on_keydown;
@@ -49,5 +50,23 @@ int		show_window(t_window *w);
 int		destroy_window(t_window *w);
 
 int		draw_text(t_window *w, int x, int y, const char *text);
+
+typedef struct s_msgbox
+{
+	char	*text;
+	int		mode;
+}	t_msgbox;
+
+# define MSGBOX_OK 0
+# define MSGBOX_YESNO 1
+
+/*
+ * if mode == MSGBOX_OK:
+ * 	return value is either -1 on error or 0 on sucess.
+ * if mode == MSGBOX_YESNO:
+ *  return value is either -1 on error or 0 if the user clicked on NO
+ *  or escape button and 1 if the user clicked on OK
+ */
+int		msgbox(int mode, char *fmt, ...) __attribute__((format(printf, 2, 3)));
 
 #endif

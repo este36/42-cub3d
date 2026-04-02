@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 17:50:39 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/02 20:05:57 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/02 21:13:45 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ static int	init_screen(t_window *w)
 	s->data = mlx_get_data_addr(s->ptr, &s->bits_pp,
 			&s->line_len, &s->endian);
 	s->bytes_pp = s->bits_pp / 8;
+	w->screen.mlx = w->mlx;
 	return (0);
 }
 
