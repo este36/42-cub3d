@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 18:22:58 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/03 00:28:02 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/03 01:30:25 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	on_win_destroy(t_window *w)
 {
 	if (w->on_destroy)
 		w->on_destroy(w);
+	ft_printf("bou");
 	mlx_loop_end(w->mlx);
 	return (0);
 }
@@ -49,10 +50,11 @@ int	win_main_loop(t_window *w)
 		w->on_mousemove(w->mouse, mouse, w);
 	w->mouse = mouse;
 	if (!w->should_render)
-		return (0);
+	 	return (0);
 	w->main_loop(w);
 	mlx_put_image_to_window(w->mlx, w->ptr, w->screen.ptr, 0, 0);
-	draw_text_queries(w);
+	if (w->_text_queries.len)
+		draw_text_queries(w);
 	w->frame++;
 	return (0);
 }

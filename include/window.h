@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 12:21:31 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/03 00:25:21 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/03 01:06:29 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ int		draw_text(t_window *w, int x, int y, const char *text);
 typedef struct s_msgbox
 {
 	char	*text;
+	long	last_frame;
 	int		mode;
 }	t_msgbox;
 

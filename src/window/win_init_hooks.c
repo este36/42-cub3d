@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 19:44:02 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/02 21:28:52 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/03 01:32:08 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,14 @@
 
 int		on_win_keydown(int ev, t_window *w)
 {
-	w->keys[ev] = true;
+	if (ev < 256)
+		w->keys[ev] = true;
+	if (ev == XK_Escape)
+	{
+		w->should_close = true;
+		mlx_loop_end(w->mlx);
+		return (0);
+	}
 	if (w->on_keydown)
 		return (w->on_keydown(ev, w));
 	return (0);
@@ -25,7 +32,8 @@ int		on_win_keydown(int ev, t_window *w)
 
 int		on_win_keyup(int ev, t_window *w)
 {
-	w->keys[ev] = false;
+	if (ev < 256)
+		w->keys[ev] = false;
 	if (w->on_keyup)
 		return (w->on_keyup(ev, w));
 	return (0);
