@@ -6,12 +6,13 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 17:50:39 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/02 18:40:13 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/02 20:05:57 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "window.h"
 #include "mlx.h"
+#include <stdlib.h>
 
 static int	init_screen(t_window *w)
 {

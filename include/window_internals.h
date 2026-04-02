@@ -1,36 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   destroy_window.c                                   :+:      :+:    :+:   */
+/*   window_internals.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/02 18:35:08 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/02 20:06:06 by emercier         ###   ########.fr       */
+/*   Created: 2026/04/02 19:19:50 by emercier          #+#    #+#             */
+/*   Updated: 2026/04/02 19:48:43 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "window.h"
-#include "mlx.h"
-#include <stdlib.h>
+#ifndef WINDOW_INTERNALS_H
+# define WINDOW_INTERNALS_H
 
-int	destroy_window(t_window *w)
-{
-	if (w->mlx)
-	{
-		if (w->screen.ptr)
-		{
-			mlx_destroy_image(w->mlx, w->screen.ptr);
-			w->screen.ptr = NULL;
-		}
-		if (w->ptr)
-		{
-			mlx_destroy_window(w->mlx, w->ptr);
-			w->ptr = NULL;
-		}
-		mlx_destroy_display(w->mlx);
-		free(w->mlx);
-		w->mlx = NULL;
-	}
-	return (0);
-}
+# include "window.h"
+
+int		on_win_keyup(int ev, t_window *w);
+int		on_win_mousedown(int ev, int x, int y, t_window *w);
+int		on_win_mouseup(int ev, int x, int y, t_window *w);
+int		win_main_loop(t_window *w);
+
+void	win_init_hooks(t_window *w);
+
+#endif // WINDOW_INTERNALS_H

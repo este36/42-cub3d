@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 17:54:21 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/02 18:34:11 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/02 20:05:47 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 # define IMAGE_H
 
 # include <stdint.h>
-# include <stdlib.h>
+# include <stddef.h>
+
+typedef uint32_t	t_color;
 
 typedef struct s_point
 {
@@ -39,18 +41,18 @@ typedef struct s_rectangle
 	t_point	pos;
 	int		width;
 	int		height;
-	int		color;
+	t_color	color;
 }	t_rectangle;
 
 typedef struct s_line
 {
-	t_point start;
+	t_point	start;
 	t_point	end;
 	int		thickness;
-	int		color;
+	t_color	color;
 }	t_line;
 
-void	put_pixel(t_image *i, int x, int y, int color);
+void	put_pixel(t_image *i, int x, int y, t_color color);
 void	draw_rectangle(t_image *i, t_rectangle *rectangle);
 void	draw_line(t_image *i, t_line *line);
 

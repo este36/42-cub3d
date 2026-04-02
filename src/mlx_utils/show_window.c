@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 18:22:58 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/02 18:54:25 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/02 19:18:02 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,8 @@
 
 int	show_window(t_window *w)
 {
-	t_window_context	ctx;
-
 	if (w->main_loop == NULL)
 		ft_panic("%s:%f: "ANSI_RED"main_loop can't be NULL"ANSI_RESET"\n",
 			__FILE__, __LINE__);
-	ft_bzero(&ctx, sizeof(ctx));
 	return (0);
 }
