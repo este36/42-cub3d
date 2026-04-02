@@ -1,36 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   show_window.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/01 19:02:47 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/02 18:58:47 by emercier         ###   ########.fr       */
+/*   Created: 2026/04/02 18:22:58 by emercier          #+#    #+#             */
+/*   Updated: 2026/04/02 18:54:25 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
 #include "window.h"
+#include "libft.h"
 
-int	render(t_window *w)
+int	show_window(t_window *w)
 {
-	if (w->frame == 1)
-		ft_printf("it works!\n");
-	return (w != NULL);
-}
+	t_window_context	ctx;
 
-int	main(int argc, char **argv)
-{
-	t_window	w;
-
-	(void)argc;
-	(void)argv;
-	ft_bzero(&w, sizeof(w));
-	if (create_window(&w) != 0)
-		return (1);
-	w.main_loop = render;
-	if (show_window(&w) != 0)
-		return (1);
-	destroy_window(&w);
+	if (w->main_loop == NULL)
+		ft_panic("%s:%f: "ANSI_RED"main_loop can't be NULL"ANSI_RESET"\n",
+			__FILE__, __LINE__);
+	ft_bzero(&ctx, sizeof(ctx));
+	return (0);
 }

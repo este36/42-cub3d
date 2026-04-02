@@ -1,36 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   destroy_window.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/01 19:02:47 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/02 18:58:47 by emercier         ###   ########.fr       */
+/*   Created: 2026/04/02 18:35:08 by emercier          #+#    #+#             */
+/*   Updated: 2026/04/02 18:44:18 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
 #include "window.h"
+#include "mlx.h"
 
-int	render(t_window *w)
+int	destroy_window(t_window *w)
 {
-	if (w->frame == 1)
-		ft_printf("it works!\n");
-	return (w != NULL);
-}
-
-int	main(int argc, char **argv)
-{
-	t_window	w;
-
-	(void)argc;
-	(void)argv;
-	ft_bzero(&w, sizeof(w));
-	if (create_window(&w) != 0)
-		return (1);
-	w.main_loop = render;
-	if (show_window(&w) != 0)
-		return (1);
-	destroy_window(&w);
+	if (w->mlx)
+	{
+		if (w->screen.ptr)
+		{
+			mlx_destroy_image(w->mlx, w->screen.ptr);
+			w->screen.ptr = NULL;
+		}
+		if (w->ptr)
+		{
+			mlx_destroy_window(w->mlx, w->ptr);
+			w->ptr = NULL;
+		}
+		mlx_destroy_display(w->mlx);
+		free(w->mlx);
+		w->mlx = NULL;
+	}
+	return (0);
 }

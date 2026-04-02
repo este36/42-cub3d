@@ -6,12 +6,15 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 17:54:21 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/02 17:57:58 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/02 18:34:11 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef IMAGE_H
 # define IMAGE_H
+
+# include <stdint.h>
+# include <stdlib.h>
 
 typedef struct s_point
 {
