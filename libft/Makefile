@@ -49,7 +49,7 @@ SRCS		= ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
 		ft_printerr.c ft_strcmp.c $(EM_SRCS) ft_sort_tab.c \
 		ft_push_tab.c ft_atoll.c
 
-OBJS		= $(SRCS:.c=.o)
+OBJS		= $(SRCS:%.c=obj/%.o)
 
 SRCS_BONUS  = ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c \
 		ft_lstdelone.c ft_lstiter.c ft_lstlast.c \
@@ -74,7 +74,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
 
-%.o: %.c libft.h
+obj/%.o: %.c libft.h
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -I$(FT_PRINTF_DIR) -I. -c $< -o $@
 
