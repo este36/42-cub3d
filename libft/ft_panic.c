@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putptr.c                                        :+:      :+:    :+:   */
+/*   ft_panic.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/30 19:32:31 by nmunari           #+#    #+#             */
-/*   Updated: 2025/09/30 20:34:45 by nmunari          ###   ########.fr       */
+/*   Created: 2026/04/02 17:21:37 by emercier          #+#    #+#             */
+/*   Updated: 2026/04/02 17:26:23 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "ft_printf_ops.h"
+#include "ft_printf_spec.h"
+#include <unistd.h>
 
-ssize_t	ft_putptr(void *ptr)
+void	ft_panic(const char *fmt, ...)
 {
-	if (!ptr)
-		return (write(1, "(nil)", 5));
-	return (write(1, "0x", 2) + puthexa((unsigned long) ptr, 0));
+	const int fd = 2;
+	va_start(arg_list, fmt);
+	printed = ft_printf_fn(write_fd, &fd, fmt, &arg_list);
+	va_end(arg_list);
+	exit(1);
 }

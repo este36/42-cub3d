@@ -1,5 +1,24 @@
 NAME	= libft.a
 
+FT_PRINTF_DIR = ft_printf
+FT_PRINTF_SRCS =\
+$(FT_PRINTF_DIR)/ft_printf.c\
+$(FT_PRINTF_DIR)/ft_printf_ops.c\
+$(FT_PRINTF_DIR)/temp_sprintf.c\
+$(FT_PRINTF_DIR)/padding.c\
+$(FT_PRINTF_DIR)/precision_int.c\
+$(FT_PRINTF_DIR)/get_hex.c\
+$(FT_PRINTF_DIR)/write_ops.c\
+$(FT_PRINTF_DIR)/parse_spec.c\
+$(FT_PRINTF_DIR)/print_char.c\
+$(FT_PRINTF_DIR)/print_hex_lower.c\
+$(FT_PRINTF_DIR)/print_hex_upper.c\
+$(FT_PRINTF_DIR)/print_int.c\
+$(FT_PRINTF_DIR)/print_percent.c\
+$(FT_PRINTF_DIR)/print_ptr.c\
+$(FT_PRINTF_DIR)/print_str.c\
+$(FT_PRINTF_DIR)/print_uint.c\
+
 EM_SRCS=\
 ft_atod.c\
 ft_atol.c\
@@ -14,6 +33,8 @@ ft_strndup.c\
 ft_strrchr_fn.c\
 ft_strtrim_fn.c\
 ft_utoa.c\
+$(FT_PRINTF_SRCS)\
+
 
 SRCS		= ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
 		ft_isascii.c ft_isdigit.c ft_isprint.c ft_memchr.c \
@@ -24,9 +45,6 @@ SRCS		= ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
 		ft_split.c ft_strjoin.c ft_strmapi.c ft_strtrim.c ft_substr.c ft_striteri.c \
 		ft_free_tab.c gnl/get_next_line.c gnl/get_next_line_utils.c \
 		ft_strjoin_free.c ft_putstr_tab_fd.c ft_strdup_tab.c \
-		ft_printf/ft_printf.c ft_printf/src/ft_putchar.c \
-		ft_printf/src/ft_puthexa.c ft_printf/src/ft_putnbr.c \
-		ft_printf/src/ft_putptr.c ft_printf/src/ft_putstr.c \
 		ft_printerr.c ft_strcmp.c $(EM_SRCS) ft_sort_tab.c \
 		ft_push_tab.c ft_atoll.c
 
@@ -51,7 +69,7 @@ ARFLAGS	= rcs
 RM	= rm -f
 
 %.o: %.c libft.h
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -I$(FT_PRINTF_DIR) -I. -c $< -o $@
 
 $(NAME): $(OBJS)
 	$(AR) $(ARFLAGS) $(NAME) $(OBJS)

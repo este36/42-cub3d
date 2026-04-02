@@ -6,7 +6,7 @@
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 16:56:15 by nmunari           #+#    #+#             */
-/*   Updated: 2026/02/02 23:48:58 by nmunari          ###   ########.fr       */
+/*   Updated: 2026/04/02 17:17:08 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@
 # include <stdint.h>
 # include <unistd.h>
 # include <stdarg.h>
-# include "ft_printf/ft_printf.h"
-# include "gnl/get_next_line.h"
 
 typedef struct s_dstr
 {

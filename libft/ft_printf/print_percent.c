@@ -1,18 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   print_percent.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: emercier <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/30 17:21:17 by nmunari           #+#    #+#             */
-/*   Updated: 2025/09/30 17:30:51 by nmunari          ###   ########.fr       */
+/*   Created: 2025/10/11 16:01:45 by emercier          #+#    #+#             */
+/*   Updated: 2025/10/24 02:16:23 by emercier         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "ft_printf_ops.h"
+#include <unistd.h> 
 
-ssize_t	ft_putchar(char c)
+int	print_percent(va_list *arg_list, t_ft_printf_spec *spec)
 {
-	return (write(1, &c, 1));
+	(void)arg_list;
+	(void)spec;
+	return (write(1, "%", 1));
 }

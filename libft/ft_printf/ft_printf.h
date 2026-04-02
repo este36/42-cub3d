@@ -3,26 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: emercier <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/30 16:58:14 by nmunari           #+#    #+#             */
-/*   Updated: 2025/12/21 21:30:46 by nmunari          ###   ########.fr       */
+/*   Created: 2025/10/11 16:07:15 by emercier          #+#    #+#             */
+/*   Updated: 2026/04/02 17:14:47 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdarg.h>
-# include "../libft.h"
+# include "libft.h"
 
-int		ft_printf(const char *str, ...);
-ssize_t	ft_putchar(char c);
-ssize_t	ft_putstr(char *str);
-ssize_t	puthexa(unsigned long n, int up_case);
-ssize_t	ft_putptr(void *ptr);
-ssize_t	ft_putnbr(long n);
+int		ft_printf(const char *fmt, ...)	__attribute__((format(printf, 1, 2)));
+int		ft_dprintf(int fd,
+			const char *fmt, ...)	__attribute__((format(printf, 2, 3)));
+int		ft_snprintf(char *str, size_t size,
+			const char *fmt, ...)	__attribute__((format(printf, 3, 4)));
+int		ft_dsprintf(t_dstr *dstr,
+			const char *fmt, ...)	__attribute__((format(printf, 2, 3)));
+char	*temp_sprintf(
+			const char *fmt, ...)	__attribute__((format(printf, 1, 2)));
 
-#endif
+#endif // FT_PRINTF_H
