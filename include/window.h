@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 12:21:31 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/02 21:57:35 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/03 00:25:21 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define WINDOW_H
 
 # include "image.h"
+# include "libft.h"
 
 typedef struct s_window		t_window;
 typedef int					(*t_main_loop_cb)(t_window *w);
@@ -24,6 +25,14 @@ typedef int					(*t_mouse_hook)(int ev, t_point mouse,
 typedef int					(*t_mouse_move_hook)(t_point prev, t_point curr,
 								t_window *w);
 
+/* bump allocator */
+typedef struct s_balloc
+{
+	uint8_t	*base;
+	uint8_t	*curr;
+	size_t	capacity;
+}	t_balloc;
+
 typedef struct s_window
 {
 	void				*mlx;
@@ -31,10 +40,13 @@ typedef struct s_window
 	void				*user_data;
 	char				*title;
 	int					should_close;
+	int					should_render;
 	size_t				frame;
 	t_image				screen;
 	t_color				font_color;
 	t_point				mouse;
+	t_balloc			_memchunk;
+	t_darr				_text_queries;
 	t_main_loop_cb		main_loop;
 	t_on_destroy_cb		on_destroy;
 	t_key_hook			on_keydown;

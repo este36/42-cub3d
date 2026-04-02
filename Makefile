@@ -7,7 +7,7 @@ LIBFT			= $(LIBFT_DIR)/libft.a
 CFLAGS			= -Wall -Wextra -Werror -g
 INCLUDE			= -I$(LIBFT_DIR)/ft_printf -I$(LIBFT_DIR) -I$(MINILIBX_DIR) -Iinclude
 LDFLAGS			= -lm -lXext -lX11 -lmlx -L$(MINILIBX_DIR)
-MLX_CFLAGS		= CFLAGS='-O3 --std=gnu89'
+MLX_CFLAGS		= CFLAGS='-O3 --std=gnu89 -g'
 
 SRCS			= src/main.c\
 				  src/window/create_window.c\
