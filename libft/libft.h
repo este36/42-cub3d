@@ -6,7 +6,7 @@
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 16:56:15 by nmunari           #+#    #+#             */
-/*   Updated: 2026/04/02 17:33:19 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/02 18:45:50 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@
 # include <stdint.h>
 # include <unistd.h>
 # include <stdarg.h>
+
+# define ANSI_RED    "\x1b[1;31m"
+# define ANSI_RESET   "\x1b[0m"
 
 typedef struct s_dstr
 {
