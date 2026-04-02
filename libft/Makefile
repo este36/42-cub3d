@@ -32,6 +32,7 @@ ft_strchr_fn.c\
 ft_strndup.c\
 ft_strrchr_fn.c\
 ft_strtrim_fn.c\
+ft_panic.c\
 ft_utoa.c\
 $(FT_PRINTF_SRCS)\
 
@@ -54,7 +55,7 @@ SRCS_BONUS  = ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c \
 		ft_lstdelone.c ft_lstiter.c ft_lstlast.c \
 		ft_lstmap.c ft_lstnew.c ft_lstsize.c
 
-OBJS_BONUS  = $(SRCS_BONUS:.c=.o)
+OBJS_BONUS  = $(SRCS_BONUS:%.c=obj/%.o)
 
 SRCS_ALL	= $(SRCS) $(SRCS_BONUS)
 OBJS_ALL	= $(OBJS) $(OBJS_BONUS)
@@ -68,13 +69,14 @@ ARFLAGS	= rcs
 
 RM	= rm -f
 
-%.o: %.c libft.h
-	$(CC) $(CFLAGS) -I$(FT_PRINTF_DIR) -I. -c $< -o $@
+all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
 
-all: $(NAME)
+%.o: %.c libft.h
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) -I$(FT_PRINTF_DIR) -I. -c $< -o $@
 
 bonus: $(NAME) $(OBJS_BONUS)
 	$(AR) $(ARFLAGS) $(NAME) $(OBJS_BONUS)

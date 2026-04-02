@@ -6,7 +6,7 @@
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 16:56:15 by nmunari           #+#    #+#             */
-/*   Updated: 2026/04/02 17:17:08 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/02 17:33:19 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int			ft_dstr_init(t_dstr *s, size_t cap);
 int			ft_dstrputc(t_dstr *dst, char c);
 int			ft_dstrncat(t_dstr *dst, char *src, size_t n);
 int			ft_dstrcat(t_dstr *dst, char *src);
+void		ft_panic(char *fmt, ...);
 int			ft_isspace(int c);
 int			ft_strcmp(const char *s1, const char *s2);
 char		*ft_strnstr(const char *big, const char *little, size_t len);
