@@ -10,9 +10,9 @@ LDFLAGS			= -lm -lXext -lX11 -lmlx -L$(MINILIBX_DIR)
 MLX_CFLAGS		= CFLAGS='-O3 --std=gnu89'
 
 SRCS			= src/main.c\
-				  src/mlx_utils/create_window.c\
-				  src/mlx_utils/show_window.c\
-				  src/mlx_utils/destroy_window.c\
+				  src/window/create_window.c\
+				  src/window/show_window.c\
+				  src/window/destroy_window.c\
 
 OBJS=$(SRCS:src/%.c=obj/%.o)
 
