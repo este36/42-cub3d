@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 20:02:46 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/03 19:38:54 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/04 00:14:29 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,30 @@
 #include "window_internals.h"
 #include "mlx.h"
 #include <stdio.h>
+
+void	retrieve_lines(t_darr *lines, t_str_ref *text, size_t max_width)
+{
+	size_t		pos;
+	t_str_ref	line;
+
+	pos = 0;
+	ft_darr_init(lines, 32, sizeof(t_str_ref));
+	ft_bzero(&line, sizeof(line));
+	while (pos < text->len)
+	{
+		line.buf = text->buf + pos;
+		line.len = 0;
+		while (pos < text->len
+			&& line.len < max_width && text->buf[pos] != '\n')
+		{
+			pos++;
+			line.len++;
+		}
+		ft_darr_push(lines, &line);
+		if (pos < text->len)
+			pos++;
+	}
+}
 
 void	*balloc(t_balloc *b, size_t size)
 {

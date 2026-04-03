@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 18:22:58 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/03 19:30:53 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/04 00:06:34 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,12 @@ int	win_main_loop(t_window *w)
 		&& w->mouse.x != mouse.x && w->mouse.y != mouse.y)
 		w->on_mousemove(w->mouse, mouse, w);
 	w->mouse = mouse;
+	w->main_loop(w);
 	if (!w->should_render)
 		return (0);
-	w->main_loop(w);
+	if (w->should_close)
+		return (on_win_destroy(w));
+	win_render_textboxes(w);
 	mlx_put_image_to_window(w->mlx, w->ptr, w->screen.ptr, 0, 0);
 	if (w->_text_queries.len)
 		draw_text_queries(w);

@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 12:21:31 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/03 19:48:09 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/04 00:38:09 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "libft.h"
 
 typedef struct s_window		t_window;
+typedef struct s_textbox	t_textbox;
 typedef int					(*t_main_loop_cb)(t_window *w);
 typedef int					(*t_on_destroy_cb)(t_window *w);
 typedef int					(*t_key_hook)(int ev, t_window *w);
@@ -24,6 +25,7 @@ typedef int					(*t_mouse_hook)(int ev, t_point mouse,
 								t_window *w);
 typedef int					(*t_mouse_move_hook)(t_point prev, t_point curr,
 								t_window *w);
+typedef int					(*t_textbox_hook)(t_window *w, t_textbox *t);
 
 /* bump allocator */
 typedef struct s_balloc
@@ -41,14 +43,17 @@ typedef struct s_window
 	void				*ptr;
 	void				*user_data;
 	char				*title;
-	int					should_close;
-	int					should_render;
+	bool				should_close;
+	bool				should_render;
 	size_t				frame;
+	long				last_frame;
+	int					fps;
 	t_image				screen;
 	t_color				font_color;
 	t_point				mouse;
 	t_balloc			_memchunk;
 	t_darr				_text_queries;
+	t_darr				_textboxes;
 	t_main_loop_cb		main_loop;
 	t_on_destroy_cb		on_destroy;
 	t_key_hook			on_keydown;
@@ -56,6 +61,12 @@ typedef struct s_window
 	t_mouse_hook		on_mousedown;
 	t_mouse_hook		on_mouseup;
 	t_mouse_move_hook	on_mousemove;
+	bool				mouse_left;
+	bool				mouse_right;
+	bool				k_left;
+	bool				k_right;
+	bool				k_up;
+	bool				k_down;
 	uint8_t				keys[256];
 }	t_window;
 
@@ -63,22 +74,39 @@ int		create_window(t_window *w);
 int		show_window(t_window *w);
 int		destroy_window(t_window *w);
 
-void	retrieve_lines(t_darr *lines, t_str_ref *text, size_t max_width);
+# define CHAR_HEIGHT	10
+# define CHAR_WIDTH 	5
+
 int		draw_text(t_window *w, int x, int y, const char *text);
 
-# define CHAR_HEIGHT	12
-# define CHAR_WIDTH 	6
+typedef struct s_textbox
+{
+	t_point			pos;
+	t_str_ref		content;
+	bool			text_center;
+	t_color			bg_color;
+	t_color			hover_bg_color;
+	size_t			border_thickness;
+	t_color			border_color;
+	size_t			padding_x;
+	size_t			padding_y;
+	int				_width;
+	int				_height;
+}	t_textbox;
+
+void	add_textbox(t_window *w, t_textbox *t);
+bool	inside_textbox(t_point p, t_textbox *t);
 
 # define LINE_SIZE		50
 # define PADDING		12
-# define BTN_HEIGHT 	50
+# define BTN_HEIGHT 	40
 
 typedef struct s_msgbox
 {
 	t_str_ref	text;
 	long		last_frame;
 	t_darr		lines;
-	int			mode;
+	t_textbox	ok;
 }	t_msgbox;
 
 int		msgbox(char *fmt, ...) __attribute__((format(printf, 1, 2)));

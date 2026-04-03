@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 17:54:21 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/03 18:58:23 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/03 20:26:03 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ typedef struct s_rectangle
 	t_point	pos;
 	int		width;
 	int		height;
-	t_color	color;
 }	t_rectangle;
 
 typedef struct s_line_ctx
@@ -52,18 +51,20 @@ typedef struct s_line_ctx
 	t_point	step;
 	int		err;
 	int		err_dbl;
+	int		thickness;
+	t_color	color;
 }	t_line_ctx;
 
 typedef struct s_line
 {
 	t_point	start;
 	t_point	end;
-	int		thickness;
-	t_color	color;
 }	t_line;
 
 void	put_pixel(t_image *img, int x, int y, t_color color);
-void	draw_rectangle(t_image *img, t_rectangle *rectangle);
-void	draw_line(t_image *img, t_line *line);
+void	fill_rectangle(t_image *img, t_rectangle *r, t_color color);
+void	draw_rectangle(t_image *img, t_rectangle *r,
+			size_t thickness, t_color color);
+void	draw_line(t_image *img, t_line *line, int thickness, t_color);
 
 #endif //  IMAGE_H
