@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 18:22:58 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/03 15:20:12 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/03 16:12:55 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	on_win_destroy(t_window *w)
 {
 	if (w->on_destroy)
 		w->on_destroy(w);
-	ft_printf("bou");
 	mlx_loop_end(w->mlx);
 	return (0);
 }

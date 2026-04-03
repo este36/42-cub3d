@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 12:21:31 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/03 15:42:56 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/03 17:39:01 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,24 +63,21 @@ int		destroy_window(t_window *w);
 
 int		draw_text(t_window *w, int x, int y, const char *text);
 
+# define CHAR_HEIGHT	12
+# define CHAR_WIDTH 	6
+
+# define LINE_SIZE		50
+# define PADDING		12
+# define BTN_HEIGHT 	50
+
 typedef struct s_msgbox
 {
 	t_str_ref	text;
 	long		last_frame;
-	size_t		lines;
+	t_darr		lines;
 	int			mode;
 }	t_msgbox;
 
-# define MSGBOX_OK 0
-# define MSGBOX_YESNO 1
-
-/*
- * if mode == MSGBOX_OK:
- * 	return value is either -1 on error or 0 on sucess.
- * if mode == MSGBOX_YESNO:
- *  return value is either -1 on error or 0 if the user clicked on NO
- *  or escape button and 1 if the user clicked on OK
- */
-int		msgbox(int mode, char *fmt, ...) __attribute__((format(printf, 2, 3)));
+int		msgbox(char *fmt, ...) __attribute__((format(printf, 1, 2)));
 
 #endif
