@@ -5,38 +5,34 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/02 20:59:40 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/02 21:09:30 by emercier         ###   ########.fr       */
+/*   Created: 2026/04/03 20:08:38 by emercier          #+#    #+#             */
+/*   Updated: 2026/04/03 20:27:06 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "image.h"
 
-void	draw_rectangle(t_image *img, t_rectangle *r)
+void	draw_rectangle(t_image *img, t_rectangle *r,
+			size_t thickness, t_color color)
 {
-	int		x;
-	int		x_end;
-	int		y;
-	int		y_end;
-	t_color	c;
+	t_line	line;
 
-	x = r->pos.x;
-	x_end = r->pos.x + r->width;
-	if (x_end > img->width)
-		x_end = img->width;
-	y = r->pos.y;
-	y_end = r->pos.y + r->height;
-	if (y_end > img->height)
-		y_end = img->height;
-	c = r->color;
-	while (y < y_end)
-	{
-		x = r->pos.x;
-		while (x < x_end)
-		{
-			put_pixel(img, x, y, c);
-			x++;
-		}
-		y++;
-	}
+	line.start = r->pos;
+	line.end.x = r->pos.x + r->width;
+	line.end.y = r->pos.y;
+	draw_line(img, &line, thickness, color);
+	line.start = r->pos;
+	line.end.x = r->pos.x;
+	line.end.y = r->pos.y + r->height;
+	draw_line(img, &line, thickness, color);
+	line.start.x = r->pos.x;
+	line.start.y = r->pos.y + r->height;
+	line.end.x = r->pos.x + r->width;
+	line.end.y = r->pos.y + r->height;
+	draw_line(img, &line, thickness, color);
+	line.start.x = r->pos.x + r->width;
+	line.start.y = r->pos.y;
+	line.end.x = r->pos.x + r->width;
+	line.end.y = r->pos.y + r->height;
+	draw_line(img, &line, thickness, color);
 }
