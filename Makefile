@@ -18,6 +18,7 @@ SRCS			= src/main.c\
 				  src/window/put_pixel.c\
 				  src/window/draw_rectangle.c\
 				  src/window/draw_text.c\
+				  src/window/draw_line.c\
 				  src/window/msgbox.c\
 
 OBJS=$(SRCS:src/%.c=obj/%.o)

@@ -6,11 +6,12 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 17:50:39 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/03 00:20:27 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/03 19:29:33 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "window.h"
+
 #include "window_internals.h"
 #include "mlx.h"
 #include <stdlib.h>
@@ -31,9 +32,9 @@ static int	init_screen(t_window *w)
 	w->screen.mlx = w->mlx;
 	if (ft_darr_init(&w->_text_queries, 64, sizeof(t_text_query)) != 0)
 		return (-1);
-	w->_memchunk.base = ft_calloc(1, 1024*10);
+	w->_memchunk.base = ft_calloc(1, 1024 * 10);
 	w->_memchunk.curr = w->_memchunk.base;
-	w->_memchunk.capacity = 1024*10;
+	w->_memchunk.capacity = 1024 * 10;
 	return (0);
 }
 

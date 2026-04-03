@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 19:44:02 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/03 01:32:08 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/03 19:30:28 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <X11/keysym.h>
 #include <X11/X.h>
 
-int		on_win_keydown(int ev, t_window *w)
+int	on_win_keydown(int ev, t_window *w)
 {
 	if (ev < 256)
 		w->keys[ev] = true;
@@ -30,7 +30,7 @@ int		on_win_keydown(int ev, t_window *w)
 	return (0);
 }
 
-int		on_win_keyup(int ev, t_window *w)
+int	on_win_keyup(int ev, t_window *w)
 {
 	if (ev < 256)
 		w->keys[ev] = false;
@@ -39,7 +39,7 @@ int		on_win_keyup(int ev, t_window *w)
 	return (0);
 }
 
-int		on_win_mousedown(int ev, int x, int y, t_window *w)
+int	on_win_mousedown(int ev, int x, int y, t_window *w)
 {
 	t_point	p;
 
@@ -50,7 +50,7 @@ int		on_win_mousedown(int ev, int x, int y, t_window *w)
 	return (0);
 }
 
-int		on_win_mouseup(int ev, int x, int y, t_window *w)
+int	on_win_mouseup(int ev, int x, int y, t_window *w)
 {
 	t_point	p;
 
@@ -65,7 +65,7 @@ void	win_init_hooks(t_window *w)
 {
 	mlx_hook(w->ptr, KeyPress, KeyPressMask, (void *)on_win_keydown, w);
 	mlx_hook(w->ptr,
-			ButtonPress, ButtonPressMask, (void *)on_win_mousedown, w);
+		ButtonPress, ButtonPressMask, (void *)on_win_mousedown, w);
 	mlx_hook(w->ptr, DestroyNotify, NoEventMask, (void *)on_win_destroy, w);
 	mlx_loop_hook(w->mlx, (void *)win_main_loop, w);
 }

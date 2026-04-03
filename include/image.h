@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 17:54:21 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/02 20:54:24 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/03 18:58:23 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,15 @@ typedef struct s_rectangle
 	int		height;
 	t_color	color;
 }	t_rectangle;
+
+typedef struct s_line_ctx
+{
+	t_point	p;
+	t_point	delta;
+	t_point	step;
+	int		err;
+	int		err_dbl;
+}	t_line_ctx;
 
 typedef struct s_line
 {
