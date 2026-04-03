@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 21:10:10 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/03 17:40:01 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/03 17:46:36 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,6 @@
 #include "libft.h"
 #include "ft_printf_ops.h"
 #include "utils.h"
-
-static int	main_loop(t_window *w)
-{
-	w->should_render = false;
-	return (0);
-}
 
 static void	find_lines(t_darr *lines, t_str_ref *text)
 {
@@ -54,7 +48,6 @@ static void	draw_msgbox(t_window *w, t_msgbox *m)
 	size_t		i;
 
 	w->user_data = &m;
-	w->main_loop = main_loop;
 	ft_bzero(&rec, sizeof(rec));
 	rec.width = w->screen.width;
 	rec.height = w->screen.height;
