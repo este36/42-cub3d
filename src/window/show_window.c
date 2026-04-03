@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 18:22:58 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/03 01:30:25 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/03 15:20:12 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int	win_main_loop(t_window *w)
 
 int	show_window(t_window *w)
 {
+	mlx_set_font(w->mlx, w->ptr, "fixed");
 	w->should_render = true;
 	if (w->main_loop == NULL)
 		ft_panic("%s:%f: "ANSI_RED"main_loop can't be NULL"ANSI_RESET"\n",
