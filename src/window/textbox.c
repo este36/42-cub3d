@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 19:52:02 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/04 00:34:57 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/04 01:09:07 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ bool	inside_textbox(t_point p, t_textbox *t)
 
 void	textbox_calculate_dimensions(t_textbox *t)
 {
-	t->_width = t->padding_x*2 + t->content.len * CHAR_WIDTH; 
-	t->_height = t->padding_y*2 + CHAR_HEIGHT; 
+	t->_width = t->padding_x * 2 + t->content.len * CHAR_WIDTH;
+	t->_height = t->padding_y * 2 + CHAR_HEIGHT;
 }
 
 void	add_textbox(t_window *w, t_textbox *t)

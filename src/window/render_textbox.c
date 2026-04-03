@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 23:44:26 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/04 00:35:56 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/04 01:08:46 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ static void	render_textbox(t_window *w, t_textbox *t)
 	if (inside_textbox(w->mouse, t))
 		bg_color = t->hover_bg_color;
 	rec.pos = t->pos;
-	rec.width = t->_width; 
-	rec.height = t->_height; 
+	rec.width = t->_width;
+	rec.height = t->_height;
 	fill_rectangle(&w->screen, &rec, bg_color);
 	ft_memcpy(buffer, t->content.buf, t->content.len);
 	buffer[t->content.len] = 0;
