@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 12:21:31 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/03 19:38:16 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/03 19:48:09 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ int		create_window(t_window *w);
 int		show_window(t_window *w);
 int		destroy_window(t_window *w);
 
+void	retrieve_lines(t_darr *lines, t_str_ref *text, size_t max_width);
 int		draw_text(t_window *w, int x, int y, const char *text);
 
 # define CHAR_HEIGHT	12

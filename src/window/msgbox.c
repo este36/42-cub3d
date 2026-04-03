@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 21:10:10 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/03 19:29:51 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/03 19:50:17 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "ft_printf_ops.h"
 #include "utils.h"
 
-static void	find_lines(t_darr *lines, t_str_ref *text)
+void	retrieve_lines(t_darr *lines, t_str_ref *text, size_t max_width)
 {
 	size_t		pos;
 	t_str_ref	line;
@@ -28,7 +28,7 @@ static void	find_lines(t_darr *lines, t_str_ref *text)
 		line.buf = text->buf + pos;
 		line.len = 0;
 		while (pos < text->len
-			&& line.len < LINE_SIZE && text->buf[pos] != '\n')
+			&& line.len < max_width && text->buf[pos] != '\n')
 		{
 			pos++;
 			line.len++;
@@ -96,7 +96,7 @@ int	msgbox(char *fmt, ...)
 	va_end(arg_list);
 	m.text.buf = dest.buf;
 	m.text.len = dest.len;
-	find_lines(&m.lines, &m.text);
+	retrieve_lines(&m.lines, &m.text, LINE_SIZE);
 	ft_bzero(&w, sizeof(w));
 	ret = run(&w, &m);
 	free(m.lines.arr);
