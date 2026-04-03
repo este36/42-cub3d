@@ -6,13 +6,14 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 18:12:23 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/03 20:24:18 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/04 00:48:39 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "image.h"
 #include <math.h>
 #include <stdlib.h>
+#include "libft.h"
 
 static void	draw_thickness(t_image *img, t_line_ctx *ctx)
 {
@@ -57,6 +58,7 @@ void	draw_line(t_image *img, t_line *line, int thickness, t_color color)
 {
 	t_line_ctx	ctx;
 
+	ft_bzero(&ctx, sizeof(ctx));
 	_init(line, &ctx);
 	ctx.thickness = thickness;
 	ctx.color = color;
