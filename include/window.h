@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 12:21:31 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/04 00:38:09 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/04 00:52:36 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ void	add_textbox(t_window *w, t_textbox *t);
 bool	inside_textbox(t_point p, t_textbox *t);
 
 # define LINE_SIZE		50
-# define PADDING		12
+# define PADDING		15
 # define BTN_HEIGHT 	40
 
 typedef struct s_msgbox
