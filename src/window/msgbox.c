@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 21:10:10 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/03 17:46:36 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/03 17:48:51 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static void	draw_msgbox(t_window *w, t_msgbox *m)
 		line = ft_darr_get(&m->lines, i);
 		ft_memcpy(buffer, line->buf, line->len);
 		buffer[line->len] = 0;
-		pos_y = PADDING + CHAR_HEIGHT + i * CHAR_HEIGHT;
+		pos_y = PADDING + i * CHAR_HEIGHT;
 		draw_text(w, PADDING, pos_y, buffer);
 		i++;
 	}

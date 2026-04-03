@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 20:02:46 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/03 00:17:42 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/03 17:48:23 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int		draw_text(t_window *w, int x, int y, const char *text)
 	buf[len] = '\0';
 	q.txt = buf;
 	q.x = x;
-	q.y = y;
+	q.y = y + CHAR_HEIGHT;
 	ft_darr_push(&w->_text_queries, &q);
 	return (0);
 }
