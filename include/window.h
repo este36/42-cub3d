@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 12:21:31 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/03 17:39:01 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/03 19:38:16 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ typedef struct s_balloc
 	uint8_t	*curr;
 	size_t	capacity;
 }	t_balloc;
+
+void	*balloc(t_balloc *b, size_t size);
 
 typedef struct s_window
 {

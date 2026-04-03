@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 20:02:46 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/03 19:30:03 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/03 19:38:54 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "mlx.h"
 #include <stdio.h>
 
-static void	*balloc(t_balloc *b, size_t size)
+void	*balloc(t_balloc *b, size_t size)
 {
 	void	*result;
 	size_t	len;
