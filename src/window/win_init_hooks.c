@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 19:44:02 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/04 00:27:28 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/04 12:05:05 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int	on_win_keydown(int ev, t_window *w)
 		mlx_loop_end(w->mlx);
 		return (0);
 	}
+	if (w->on_keydown)
+		w->on_keydown(ev, w);
 	if (ev == XK_Right)
 		w->k_right = true;
 	else if (ev == XK_Left)
@@ -33,13 +35,13 @@ int	on_win_keydown(int ev, t_window *w)
 		w->k_up = true;
 	else if (ev == XK_Down)
 		w->k_down = true;
-	if (w->on_keydown)
-		return (w->on_keydown(ev, w));
 	return (0);
 }
 
 int	on_win_keyup(int ev, t_window *w)
 {
+	if (w->on_keyup)
+		w->on_keyup(ev, w);
 	if (ev < 256)
 		w->keys[ev] = false;
 	if (ev == XK_Right)
@@ -50,8 +52,6 @@ int	on_win_keyup(int ev, t_window *w)
 		w->k_up = false;
 	else if (ev == XK_Down)
 		w->k_down = false;
-	if (w->on_keyup)
-		return (w->on_keyup(ev, w));
 	return (0);
 }
 
@@ -61,12 +61,12 @@ int	on_win_mousedown(int ev, int x, int y, t_window *w)
 
 	p.x = x;
 	p.y = y;
+	if (w->on_mousedown)
+		w->on_mousedown(ev, p, w);
 	if (ev == Button1)
 		w->mouse_left = true;
 	else if (ev == Button2)
 		w->mouse_right = true;
-	if (w->on_mousedown)
-		return (w->on_mousedown(ev, p, w));
 	return (0);
 }
 
@@ -76,12 +76,12 @@ int	on_win_mouseup(int ev, int x, int y, t_window *w)
 
 	p.x = x;
 	p.y = y;
+	if (w->on_mouseup)
+		w->on_mouseup(ev, p, w);
 	if (ev == Button1)
 		w->mouse_left = false;
 	else if (ev == Button2)
 		w->mouse_right = false;
-	if (w->on_mouseup)
-		return (w->on_mouseup(ev, p, w));
 	return (0);
 }
 
