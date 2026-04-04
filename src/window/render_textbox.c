@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 23:44:26 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/04 15:56:23 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/04 17:20:27 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	render_textbox(t_window *w, t_textbox *t)
 	ft_memcpy(buffer, t->content.buf, t->content.len);
 	buffer[t->content.len] = 0;
 	draw_text(w, t->pos.x + t->padding_x,
-		abs((int)t->pos.y + (int)t->padding_y - 1), buffer);
+		abs((int)t->pos.y + (int)t->padding_y - 2), buffer);
 	if (t->border_thickness != 0)
 		draw_rectangle(&w->screen, &rec, t->border_thickness, t->border_color);
 	if (t->_mem)

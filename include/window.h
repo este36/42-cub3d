@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 12:21:31 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/04 14:41:12 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/04 17:18:51 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	clear_background(t_window *w, t_color color);
 void	target_fps(double fps);
 int		destroy_window(t_window *w);
 
-# define CHAR_HEIGHT	12
+# define CHAR_HEIGHT	13
 # define CHAR_WIDTH 	6
 
 int		draw_text(t_window *w, int x, int y, const char *text);
