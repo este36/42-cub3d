@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 17:54:21 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/04 19:27:08 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/04 20:04:56 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ typedef struct s_line
 }	t_line;
 
 void	put_pixel(t_image *img, int x, int y, t_color color);
+t_color	get_pixel(t_image *img, int x, int y);
+int		load_xpm_image(void *mlx, t_image *img, char *path);
 void	fill_rectangle(t_image *img, t_rectangle *r, t_color color);
 void	draw_rectangle(t_image *img, t_rectangle *r,
 			size_t thickness, t_color color);

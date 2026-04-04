@@ -15,7 +15,6 @@ SRCS			= src/main.c\
 				  src/window/win_init_hooks.c\
 				  src/window/show_window.c\
 				  src/window/destroy_window.c\
-				  src/window/put_pixel.c\
 				  src/window/draw_rectangle.c\
 				  src/window/fill_rectangle.c\
 				  src/window/sleep_ms.c\
