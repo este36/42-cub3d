@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/04 12:17:00 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/04 12:43:11 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/04 12:53:10 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_vdsprintf(t_dstr *dstr, const char *fmt, va_list lst)
 
 int	ft_vsnprintf(char *str, size_t size, const char *fmt, va_list lst)
 {
-	va_list tmp;
+	va_list	tmp;
 	t_dstr	dest;
 	int		ret;
 
