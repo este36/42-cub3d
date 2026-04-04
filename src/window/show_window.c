@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 18:22:58 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/04 00:06:34 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/04 14:20:00 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include "window_internals.h"
 #include "libft.h"
 #include "mlx.h"
+#include "utils.h"
+#include <stdlib.h>
 
 int	on_win_destroy(t_window *w)
 {
@@ -21,22 +23,6 @@ int	on_win_destroy(t_window *w)
 		w->on_destroy(w);
 	mlx_loop_end(w->mlx);
 	return (0);
-}
-
-void	draw_text_queries(t_window *w)
-{
-	size_t			i;
-	t_text_query	*q;
-
-	i = 0;
-	while (i < w->_text_queries.len)
-	{
-		q = ft_darr_get(&w->_text_queries, i);
-		mlx_string_put(w->mlx, w->ptr, q->x, q->y, w->font_color, q->txt);
-		i++;
-	}
-	w->_text_queries.len = 0;
-	w->_memchunk.curr = w->_memchunk.base;
 }
 
 int	win_main_loop(t_window *w)
@@ -57,7 +43,7 @@ int	win_main_loop(t_window *w)
 	mlx_put_image_to_window(w->mlx, w->ptr, w->screen.ptr, 0, 0);
 	if (w->_text_queries.len)
 		draw_text_queries(w);
-	w->frame++;
+	update_fps(w);
 	return (0);
 }
 
@@ -69,7 +55,6 @@ static int	win_do_nothing(t_window *w)
 
 int	show_window(t_window *w)
 {
-	mlx_set_font(w->mlx, w->ptr, "fixed");
 	w->should_render = true;
 	if (w->main_loop == NULL)
 		w->main_loop = win_do_nothing;

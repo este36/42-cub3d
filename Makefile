@@ -18,8 +18,10 @@ SRCS			= src/main.c\
 				  src/window/put_pixel.c\
 				  src/window/draw_rectangle.c\
 				  src/window/fill_rectangle.c\
+				  src/window/sleep_ms.c\
 				  src/window/draw_text.c\
 				  src/window/draw_line.c\
+				  src/window/window.c\
 				  src/window/msgbox.c\
 				  src/window/textbox.c\
 				  src/window/render_textbox.c\

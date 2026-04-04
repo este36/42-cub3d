@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 12:21:31 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/04 12:08:57 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/04 14:41:12 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,12 @@ typedef struct s_window
 
 int		create_window(t_window *w);
 int		show_window(t_window *w);
+void	clear_background(t_window *w, t_color color);
+void	target_fps(double fps);
 int		destroy_window(t_window *w);
 
-# define CHAR_HEIGHT	10
-# define CHAR_WIDTH 	5
+# define CHAR_HEIGHT	12
+# define CHAR_WIDTH 	6
 
 int		draw_text(t_window *w, int x, int y, const char *text);
 
@@ -92,6 +94,7 @@ typedef struct s_textbox
 	size_t			padding_y;
 	int				_width;
 	int				_height;
+	t_balloc		*_mem;
 }	t_textbox;
 
 void	add_textbox(t_window *w, t_textbox *t);

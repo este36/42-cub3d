@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 19:19:50 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/03 23:45:52 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/04 14:34:42 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,11 @@ int		win_main_loop(t_window *w);
 
 void	win_init_hooks(t_window *w);
 
+void	update_fps(t_window *w);
+void	draw_text_queries(t_window *w);
 void	win_render_textboxes(t_window *w);
 void	textbox_calculate_dimensions(t_textbox *t);
-
+void	sleep_ms(int ms);
 void	retrieve_lines(t_darr *lines, t_str_ref *text, size_t max_width);
 
 

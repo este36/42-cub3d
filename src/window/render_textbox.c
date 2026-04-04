@@ -6,11 +6,12 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 23:44:26 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/04 01:08:46 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/04 14:00:48 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "window.h"
+#include <stdlib.h>
 
 static void	render_textbox(t_window *w, t_textbox *t)
 {
@@ -27,9 +28,12 @@ static void	render_textbox(t_window *w, t_textbox *t)
 	fill_rectangle(&w->screen, &rec, bg_color);
 	ft_memcpy(buffer, t->content.buf, t->content.len);
 	buffer[t->content.len] = 0;
-	draw_text(w, t->pos.x + t->padding_x, t->pos.y + t->padding_y, buffer);
+	draw_text(w, t->pos.x + t->padding_x,
+			abs((int)t->pos.y + (int)t->padding_y - 1), buffer);
 	if (t->border_thickness != 0)
 		draw_rectangle(&w->screen, &rec, t->border_thickness, t->border_color);
+	if (t->_mem)
+		t->_mem->curr = t->_mem->base;
 }
 
 void	win_render_textboxes(t_window *w)
