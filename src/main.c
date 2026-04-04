@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 19:02:47 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/04 14:42:02 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/04 15:56:42 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ int	render(t_window *w)
 	p.y = 50;
 	textbox(&t, p, "FPS: %d", w->fps);
 	add_textbox(w, &t);
-	p.y += CHAR_HEIGHT*4 + 2;
+	p.y += CHAR_HEIGHT * 4 + 2;
 	textbox(&t, p, "mouse: {x=%d, y=%d}", w->mouse.x, w->mouse.y);
 	add_textbox(w, &t);
 	if (w->mouse.x > 200 && w->mouse.y > 200)
-	 	msgbox("gotcha");
+		msgbox("gotcha");
 	target_fps(60);
 	return (w != NULL);
 }

@@ -6,13 +6,13 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/16 23:37:46 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/04 14:34:12 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/04 15:56:13 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <sys/time.h>
-# include <stdlib.h>
-# include <unistd.h>
+#include <sys/time.h>
+#include <stdlib.h>
+#include <unistd.h>
 
 static long	get_remaining(struct timeval now, long target)
 {
@@ -54,4 +54,3 @@ void	sleep_ms(int ms)
 		usleep(get_chunk(remaining));
 	}
 }
-
