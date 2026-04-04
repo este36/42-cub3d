@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 12:21:31 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/04 00:52:36 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/04 12:08:57 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,8 @@ typedef struct s_textbox
 
 void	add_textbox(t_window *w, t_textbox *t);
 bool	inside_textbox(t_point p, t_textbox *t);
+void	textbox(t_textbox *t, t_point p,
+			char *fmt, ...) __attribute__((format(printf, 3, 4)));
 
 # define LINE_SIZE		50
 # define PADDING		15
