@@ -24,6 +24,7 @@ SRCS			= src/main.c\
 				  src/window/window.c\
 				  src/window/msgbox.c\
 				  src/window/textbox.c\
+				  src/window/image.c\
 				  src/window/render_textbox.c\
 
 OBJS=$(SRCS:src/%.c=obj/%.o)
