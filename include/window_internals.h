@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 19:19:50 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/04 20:22:20 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/04 20:24:31 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	textbox_calculate_dimensions(t_textbox *t);
 void	sleep_ms(int ms);
 void	retrieve_lines(t_darr *lines, t_str_ref *text, size_t max_width);
 
-typedef	struct s_text_query
+typedef struct s_text_query
 {
 	int		x;
 	int		y;

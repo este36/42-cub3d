@@ -56,7 +56,7 @@ $(MINILIBX_DIR):
 	rm -rf $(MINILIBX_DIR)/.git
 
 norm:
-	norminette src $(LIBFT_DIR) | grep Error || true
+	norminette src include $(LIBFT_DIR) | grep Error || true
 
 clean:
 	rm -rf obj
