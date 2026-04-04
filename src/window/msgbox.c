@@ -6,14 +6,14 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 21:10:10 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/04 00:42:59 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/04 12:48:23 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "window.h"
 #include "window_internals.h"
 #include "libft.h"
-#include "ft_printf_ops.h"
+#include "ft_printf.h"
 #include "utils.h"
 
 static int	on_mouseup(int ev, t_point mouse, t_window *w)
@@ -93,27 +93,22 @@ int	run(t_window *w, t_msgbox *m)
 
 int	msgbox(char *fmt, ...)
 {
+	static char	buffer[2048];
 	t_msgbox	m;
 	va_list		arg_list;
-	t_dstr		dest;
 	t_window	w;
 	int			ret;
 
-	dest.buf = ft_calloc(1, 4096);
-	if (!dest.buf)
-		return (-1);
-	dest.cap = 4096;
-	dest.len = 0;
+	ft_bzero(buffer, sizeof(buffer));
 	va_start(arg_list, fmt);
-	ft_printf_fn(write_str, &dest, fmt, &arg_list);
+	ft_vsnprintf(buffer, sizeof(buffer), fmt, arg_list);
 	va_end(arg_list);
 	ft_bzero(&m, sizeof(m));
-	m.text.buf = dest.buf;
-	m.text.len = dest.len;
+	m.text.buf = buffer;
+	m.text.len = ft_strlen(buffer);
 	retrieve_lines(&m.lines, &m.text, LINE_SIZE);
 	ft_bzero(&w, sizeof(w));
 	ret = run(&w, &m);
 	free(m.lines.arr);
-	free(dest.buf);
 	return (ret);
 }
