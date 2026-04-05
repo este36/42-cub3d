@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putptr.c                                        :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/30 19:32:31 by nmunari           #+#    #+#             */
-/*   Updated: 2025/09/30 20:34:45 by nmunari          ###   ########.fr       */
+/*   Created: 2026/04/03 00:55:56 by emercier          #+#    #+#             */
+/*   Updated: 2026/04/03 00:58:29 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include <sys/time.h>
+#include <stdlib.h>
 
-ssize_t	ft_putptr(void *ptr)
+long	now_ms(void)
 {
-	if (!ptr)
-		return (write(1, "(nil)", 5));
-	return (write(1, "0x", 2) + puthexa((unsigned long) ptr, 0));
+	struct timeval	tv;
+
+	if (gettimeofday(&tv, NULL) != 0)
+		return (-1);
+	return (tv.tv_sec * 1000L + tv.tv_usec / 1000L);
 }

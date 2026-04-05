@@ -6,7 +6,7 @@
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 16:56:15 by nmunari           #+#    #+#             */
-/*   Updated: 2026/02/02 23:48:58 by nmunari          ###   ########.fr       */
+/*   Updated: 2026/04/02 18:45:50 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@
 # include <stdint.h>
 # include <unistd.h>
 # include <stdarg.h>
-# include "ft_printf/ft_printf.h"
-# include "gnl/get_next_line.h"
+
+# define ANSI_RED    "\x1b[1;31m"
+# define ANSI_RESET   "\x1b[0m"
 
 typedef struct s_dstr
 {
@@ -57,6 +58,7 @@ int			ft_dstr_init(t_dstr *s, size_t cap);
 int			ft_dstrputc(t_dstr *dst, char c);
 int			ft_dstrncat(t_dstr *dst, char *src, size_t n);
 int			ft_dstrcat(t_dstr *dst, char *src);
+void		ft_panic(char *fmt, ...);
 int			ft_isspace(int c);
 int			ft_strcmp(const char *s1, const char *s2);
 char		*ft_strnstr(const char *big, const char *little, size_t len);

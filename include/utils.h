@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/30 17:21:17 by nmunari           #+#    #+#             */
-/*   Updated: 2025/09/30 17:30:51 by nmunari          ###   ########.fr       */
+/*   Created: 2026/04/03 00:56:28 by emercier          #+#    #+#             */
+/*   Updated: 2026/04/03 00:57:00 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#ifndef UTILS_H
+# define UTILS_H
 
-ssize_t	ft_putchar(char c)
-{
-	return (write(1, &c, 1));
-}
+long	now_ms(void);
+
+#endif // UTILS_H

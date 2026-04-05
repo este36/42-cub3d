@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   print_percent.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
+/*   By: emercier <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/01 18:58:22 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/02 18:44:06 by emercier         ###   ########.fr       */
+/*   Created: 2025/10/11 16:01:45 by emercier          #+#    #+#             */
+/*   Updated: 2025/10/24 02:16:23 by emercier         ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
-# include "libft.h"
+#include "ft_printf_ops.h"
+#include <unistd.h> 
 
-typedef struct s_game
+int	print_percent(va_list *arg_list, t_ft_printf_spec *spec)
 {
-}	t_game;
-
-#endif // CUB3D_H
+	(void)arg_list;
+	(void)spec;
+	return (write(1, "%", 1));
+}

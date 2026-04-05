@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_panic.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/30 19:05:20 by nmunari           #+#    #+#             */
-/*   Updated: 2025/09/30 19:25:47 by nmunari          ###   ########.fr       */
+/*   Created: 2026/04/02 17:21:37 by emercier          #+#    #+#             */
+/*   Updated: 2026/04/02 18:39:32 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "ft_printf_ops.h"
+#include "ft_printf_spec.h"
+#include <unistd.h>
 
-ssize_t	ft_putstr(char *str)
+void	ft_panic(char *fmt, ...)
 {
-	if (!str)
-		return (write(1, "(null)", 6));
-	return (write(1, str, ft_strlen(str)));
+	va_list	arg_list;
+	int		fd;
+
+	fd = 2;
+	va_start(arg_list, fmt);
+	ft_printf_fn(write_fd, &fd, fmt, &arg_list);
+	va_end(arg_list);
+	exit(1);
 }

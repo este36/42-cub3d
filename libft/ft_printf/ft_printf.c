@@ -1,59 +1,89 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_printf.c                                         :+:    :+:           */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: emercier <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/30 17:07:09 by nmunari           #+#    #+#             */
-/*   Updated: 2025/09/30 21:13:10 by nmunari          ###   ########.fr       */
+/*   Created: 2025/10/10 20:32:23 by emercier          #+#    #+#             */
+/*   Updated: 2025/11/17 22:53:51 by emercier       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "ft_printf_spec.h"
+#include "ft_printf_ops.h"
+#include <limits.h>
 
-static int	arg_print(const char type, va_list ap)
+bool	lookup(va_list *arg_list, t_ft_printf_spec *spec, int *print_count)
 {
-	if (type == 'c')
-		return (ft_putchar(va_arg(ap, int)));
-	if (type == 's')
-		return (ft_putstr(va_arg(ap, char *)));
-	if (type == 'p')
-		return (ft_putptr(va_arg(ap, void *)));
-	if (type == 'd' || type == 'i')
-		return (ft_putnbr((long) va_arg(ap, int)));
-	if (type == 'u')
-		return (ft_putnbr((long) va_arg(ap, unsigned int)));
-	if (type == 'x')
-		return (puthexa(va_arg(ap, unsigned int), 0));
-	if (type == 'X')
-		return (puthexa(va_arg(ap, unsigned int), 1));
-	if (type == '%')
-		return (write(1, "%", 1));
-	return (0);
+	static const t_ft_printf_op	ops[14] = {
+		print_ptr, print_char,
+		print_int, print_str,
+		print_hex_upper, print_uint,
+		NULL, print_int,
+		print_hex_lower, print_percent,
+		NULL, NULL, NULL, NULL
+	};
+	const t_ft_printf_op		op = ops[spec->conversion % 14];
+	int							printed;
+
+	if (!op)
+		return (0);
+	printed = op(arg_list, spec);
+	if (printed < 0)
+		return (false);
+	*print_count += printed;
+	return (true);
 }
 
-int	ft_printf(const char *str, ...)
+int	print_safe_raw_bytes(
+					const char **fmt,
+					int *print_count,
+					t_write_op write_op,
+					void *user_out)
 {
-	int		len;
-	int		i;
-	va_list	ap;
+	const char	*next_percent = ft_strchr(*fmt, '%');
+	int			printed;
 
-	if (!str)
-		return (0);
-	i = 0;
-	len = 0;
-	va_start(ap, str);
-	while (str[i])
+	if (!next_percent)
+		printed = ft_strlen(*fmt);
+	else
+		printed = (next_percent - *fmt);
+	if (write_raw(write_op, user_out, *fmt, printed) < 0)
+		return (false);
+	*fmt += printed;
+	*print_count += printed;
+	return (true);
+}
+
+int	cleanup_and_fail(va_list *arg_list)
+{
+	va_end(*arg_list);
+	return (-1);
+}
+
+int	ft_printf_fn(
+		t_write_op write_op, void *user_out,
+		const char *fmt, va_list *arg_list)
+{
+	int					print_count;
+	t_ft_printf_spec	spec;
+
+	print_count = 0;
+	while (*fmt)
 	{
-		if (str[i] == '%')
+		if (!print_safe_raw_bytes(&fmt, &print_count, write_op, user_out))
+			return (cleanup_and_fail(arg_list));
+		if (*fmt)
 		{
-			len += arg_print(str[++i], ap);
-			i++;
+			fmt++;
+			parse_spec(&spec, &fmt, arg_list);
+			spec.user_write_output = user_out;
+			spec.write_cb = write_op;
+			if (!lookup(arg_list, &spec, &print_count))
+				return (cleanup_and_fail(arg_list));
 		}
-		else
-			len += ft_putchar(str[i++]);
 	}
-	va_end(ap);
-	return (len);
+	return (print_count);
 }
