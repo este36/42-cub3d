@@ -9,6 +9,8 @@ INCLUDE			= -I$(LIBFT_DIR)/ft_printf -I$(LIBFT_DIR) -I$(MINILIBX_DIR) -Iinclude
 LDFLAGS			= -lmlx -L$(MINILIBX_DIR) -lXext -lX11 -lm 
 MLX_CFLAGS		= CFLAGS='-O3 --std=gnu89 -g'
 
+SRCS_PARSING	= src/parsing/parse_cub.c
+
 SRCS			= src/main.c\
 				  src/utils.c\
 				  src/window/create_window.c\
