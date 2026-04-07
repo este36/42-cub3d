@@ -27,6 +27,7 @@ SRCS			= src/main.c\
 				  src/window/textbox.c\
 				  src/window/image.c\
 				  src/window/render_textbox.c\
+				  $(SRCS_PARSING)
 
 OBJS=$(SRCS:src/%.c=obj/%.o)
 
@@ -56,6 +57,9 @@ $(MINILIBX): | $(MINILIBX_DIR)
 $(MINILIBX_DIR):
 	git clone https://github.com/42paris/minilibx-linux.git
 	rm -rf $(MINILIBX_DIR)/.git
+
+test: $(MINILIBX) $(LIBFT) $(filter-out obj/main.o, $(OBJS))
+	$(CC) -o test_cub $(CFLAGS) $(INCLUDE) $(filter %.o, $^) $(LIBFT) $(LDFLAGS)
 
 norm:
 	norminette src include $(LIBFT_DIR) | grep Error || true
