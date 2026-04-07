@@ -6,7 +6,7 @@
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 14:06:49 by nmunari           #+#    #+#             */
-/*   Updated: 2026/04/07 15:02:26 by nmunari          ###   ########.fr       */
+/*   Updated: 2026/04/07 17:37:10 by nmunari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,11 @@ static int	get_file_size(char *filename)
 		line = get_next_line(fd);
 	}
 	close(fd);
+	if (count == 0)
+	{
+		printf("Error\nFile is empty\n");
+		return (-1);
+	}
 	return (count);
 }
 
@@ -71,7 +76,7 @@ char	**get_cub(char *filename)
 	if (!check_file_extension(filename))
 		return (NULL);
 	lines = get_file_size(filename);
-	if (lines <= 0)
+	if (lines < 0)
 		return (NULL);
 	cub = malloc(sizeof(char *) * (lines + 1));
 	if (!cub)
