@@ -59,7 +59,8 @@ $(MINILIBX_DIR):
 	rm -rf $(MINILIBX_DIR)/.git
 
 test: $(MINILIBX) $(LIBFT) $(filter-out obj/main.o, $(OBJS))
-	$(CC) -o test_cub $(CFLAGS) $(INCLUDE) $(filter %.o, $^) $(LIBFT) $(LDFLAGS)
+	$(CC) -o test $(CFLAGS) $(INCLUDE) $(filter %.o, $^) $(LIBFT) $(LDFLAGS)
+	@./test
 
 norm:
 	norminette src include $(LIBFT_DIR) | grep Error || true
