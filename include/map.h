@@ -6,7 +6,7 @@
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 14:00:51 by nmunari           #+#    #+#             */
-/*   Updated: 2026/04/07 19:31:19 by nmunari          ###   ########.fr       */
+/*   Updated: 2026/04/07 21:26:46 by nmunari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef enum e_map_state
 	MAP_FINISHED
 }	t_map_state;
 
-typedef struct s_map
+typedef struct s_render_data
 {
 	char	*no_path;
 	char	*so_path;
@@ -44,10 +44,12 @@ typedef struct s_map
 	int		map_height;
 	int		map_width;
 	char	**map;
-}	t_map;
+}	t_render_data;
 
 int		skip_spaces(char *line);
+int		get_element_type(char *line);
 char	**get_cub(char *filename);
+int		check_cub(char **cub);
 int		check_texture(char *path);
 
 #endif

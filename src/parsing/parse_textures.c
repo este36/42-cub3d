@@ -1,102 +1,83 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_cub.c                                        :+:      :+:    :+:   */
+/*   parse_textures.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/07 16:51:03 by nmunari           #+#    #+#             */
-/*   Updated: 2026/04/07 21:26:42 by nmunari          ###   ########.fr       */
+/*   Created: 2026/04/07 18:00:44 by nmunari           #+#    #+#             */
+/*   Updated: 2026/04/07 21:26:38 by nmunari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "map.h"
 
-static int	is_map_line(char *line)
+static char	*get_texture_path(char *line)
 {
-	int	i;
-	int	has_content;
+	int		i;
+	int		len;
+
+	i = skip_spaces(line);
+	i += 3;
+	while (line[i] && ft_isspace(line[i]))
+		i++;
+	len = 0;
+	while (line[i + len] && line[i + len] != '\n' && !ft_isspace(line[i + len]))
+		len++;
+	return (ft_substr(line, i, len));
+}
+
+int	parse_texture(t_render_data *data, char *line, t_type type)
+{
+	char	*path;
+
+	path = get_texture_path(line);
+	if (!path)
+		return (printf("Error\nMalloc failed for texture path\n"), 0);
+	if (!check_texture(path))
+	{
+		free(path);
+		return (0);
+	}
+	if (type == NORTH)
+		data->no_path = path;
+	else if (type == SOUTH)
+		data->so_path = path;
+	else if (type == WEST)
+		data->we_path = path;
+	else if (type == EAST)
+		data->ea_path = path;
+	return (1);
+}
+
+/* static int  validate_test_textures(char **cub)
+{
+	int		i;
+	char	*path;
+	t_type	type;
 
 	i = 0;
-	has_content = 0;
-	while (line[i])
+	while (cub[i])
 	{
-		if (line[i] == '0' || line[i] == '1' || line[i] == 'N'
-			||line[i] == 'S' || line[i] == 'E' || line[i] == 'W')
-			has_content = 1;
-		else if (!ft_isspace(line[i]) && line[i] != '\n')
+		type = get_element_type(cub[i]);
+		if (type >= NORTH && type <= EAST)
 		{
-			return (0);
+			path = get_texture_path(cub[i]);
+			if (!path)
+				return (0);
+			if (!check_texture(path))
+			{
+				free(path);
+				return (0);
+			}
+			free(path);
 		}
 		i++;
 	}
-	return (has_content);
-}
-
-static int	parse_element(char *line, int *flags)
-{
-	int	type;
-
-	type = get_element_type(line);
-	if (type == NONE || flags[type] == 1)
-		return (printf("Error\nUnknown or duplicate element\n"), 0);
-	flags[type] = 1;
 	return (1);
 }
 
-static int	process_line(char *line, int *flags, int *map_state)
-{
-	int	i;
-
-	i = skip_spaces(line);
-	if (line[i] == '\0' || line[i] == '\n')
-	{
-		if (*map_state == MAP_READING)
-			*map_state = MAP_FINISHED;
-		return (1);
-	}
-	if (is_map_line(line))
-	{
-		if (*map_state == MAP_FINISHED)
-			return (printf("Error\nEmpty line inside or after map\n"), 0);
-		*map_state = MAP_READING;
-	}
-	else if (*map_state != MAP_START)
-		return (printf("Error\nInvalid line in or after map\n"), 0);
-	else if (!parse_element(line, flags))
-		return (0);
-	return (1);
-}
-
-int	check_cub(char **cub)
-{
-	int	i;
-	int	flags[7];
-	int	map_state;
-
-	i = -1;
-	while (++i < 7)
-		flags[i] = 0;
-	i = 0;
-	map_state = 0;
-	while (cub[i])
-	{
-		if (!process_line(cub[i], flags, &map_state))
-			return (0);
-		i++;
-	}
-	i = 0;
-	while (++i <= 6)
-	{
-		if (flags[i] == 0)
-			return (printf("Error\nMissing one or more identifiers\n"), 0);
-	}
-	if (map_state == 0)
-		return (printf("Error\nNo map found in file\n"), 0);
-	return (1);
-}
-
-/* static void	test_map(char *path)
+static void test_map(char *path)
 {
 	char	**cub;
 
@@ -107,15 +88,17 @@ int	check_cub(char **cub)
 		printf("Result: INVALID (Cannot open/read file)\n\n");
 		return ;
 	}
-	
-	if (check_cub(cub))
-		printf("Result: VALID\n\n");
+	if (!check_cub(cub))
+		printf("Result: INVALID (Structure error)\n\n");
+	else if (!validate_test_textures(cub))
+		printf("Result: INVALID (Texture error)\n\n");
 	else
-		printf("Result: INVALID\n\n");
+		printf("Result: VALID\n\n");
+		
 	free_tab(cub);
 }
 
-int	main(void)
+int main(void)
 {
 	int		i;
 	char	*maps_to_test[] = {
@@ -178,4 +161,4 @@ int	main(void)
 	}
 	printf("========== END OF TESTS ==========\n\n");
 	return (0);
-} */
+}  */
