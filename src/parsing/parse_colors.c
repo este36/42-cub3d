@@ -6,7 +6,7 @@
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 21:50:16 by nmunari           #+#    #+#             */
-/*   Updated: 2026/04/07 23:42:39 by nmunari          ###   ########.fr       */
+/*   Updated: 2026/04/07 23:44:00 by nmunari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	parse_color(t_game *data, char *line, t_type type)
 	return (1);
 }
 
-static int	validate_test_colors(char **cub)
+/* static int	validate_test_colors(char **cub)
 {
 	int		i;
 	t_type	type;
@@ -143,3 +143,4 @@ int main(void)
 	printf("========== END OF COLOR TESTS ==========\n\n");
 	return (0);
 } 
+ */
