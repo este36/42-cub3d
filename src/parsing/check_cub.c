@@ -6,7 +6,7 @@
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 16:51:03 by nmunari           #+#    #+#             */
-/*   Updated: 2026/04/07 19:29:37 by nmunari          ###   ########.fr       */
+/*   Updated: 2026/04/07 19:35:43 by nmunari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static int	parse_element(char *line, int *flags)
 	int	type;
 
 	type = get_element_type(line);
-	if (type == 0 || flags[type] == 1)
+	if (type == NONE || flags[type] == 1)
 		return (printf("Error\nUnknown or duplicate element\n"), 0);
 	flags[type] = 1;
 	return (1);
@@ -71,17 +71,17 @@ static int	process_line(char *line, int *flags, int *map_state)
 	i = skip_spaces(line);
 	if (line[i] == '\0' || line[i] == '\n')
 	{
-		if (*map_state == 1)
-			*map_state = 2;
+		if (*map_state == MAP_READING)
+			*map_state = MAP_FINISHED;
 		return (1);
 	}
 	if (is_map_line(line))
 	{
-		if (*map_state == 2)
+		if (*map_state == MAP_FINISHED)
 			return (printf("Error\nEmpty line inside or after map\n"), 0);
-		*map_state = 1;
+		*map_state = MAP_READING;
 	}
-	else if (*map_state > 0)
+	else if (*map_state != MAP_START)
 		return (printf("Error\nInvalid line in or after map\n"), 0);
 	else if (!parse_element(line, flags))
 		return (0);
