@@ -11,7 +11,9 @@ MLX_CFLAGS		= CFLAGS='-O3 --std=gnu89 -g'
 
 SRCS_PARSING	= src/parsing/parse_cub.c\
 				  src/parsing/check_cub.c\
-				  src/parsing/utils_cub.c
+				  src/parsing/utils_cub.c\
+				  src/parsing/check_textures.c\
+				  src/parsing/parse_textures.c
 
 SRCS			= src/main.c\
 				  src/utils.c\
@@ -61,8 +63,8 @@ $(MINILIBX_DIR):
 	rm -rf $(MINILIBX_DIR)/.git
 
 test: $(MINILIBX) $(LIBFT) $(filter-out obj/main.o, $(OBJS))
-	$(CC) -o test $(CFLAGS) $(INCLUDE) $(filter %.o, $^) $(LIBFT) $(LDFLAGS)
-	@./test
+	$(CC) -o test_main $(CFLAGS) $(INCLUDE) $(filter %.o, $^) $(LIBFT) $(LDFLAGS)
+	@./test_main
 
 norm:
 	norminette src include $(LIBFT_DIR) | grep Error || true
