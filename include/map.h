@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   map.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/01 18:58:22 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/07 14:35:00 by nmunari          ###   ########.fr       */
+/*   Created: 2026/04/07 14:00:51 by nmunari           #+#    #+#             */
+/*   Updated: 2026/04/07 15:03:12 by nmunari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef MAP_H
+# define MAP_H
 
-# include "libft.h"
-# include <fcntl.h>
-# include <stdio.h>
+# include "cub3d.h"
 
-typedef struct s_game
+typedef struct s_map
 {
-}	t_game;
+	char	*no_path;
+	char	*so_path;
+	char	*we_path;
+	char	*ea_path;
+	int		floor_color[3];
+	int		ceiling_color[3];
+	char	**map;
+}	t_map;
 
-#endif // CUB3D_H
+char	**get_cub(char *filename);
+
+#endif
