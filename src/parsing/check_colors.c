@@ -6,7 +6,7 @@
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 21:50:09 by nmunari           #+#    #+#             */
-/*   Updated: 2026/04/07 23:42:27 by nmunari          ###   ########.fr       */
+/*   Updated: 2026/04/08 01:18:49 by nmunari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	check_color(char *line)
 	int		i;
 
 	i = skip_spaces(line);
-	i += 2; // On passe "F " ou "C "
+	i += 2;
 	if (count_commas(&line[i]) != 2)
 		return (printf("Error\nInvalid RGB format (need 2 commas)\n"), 0);
 	rgb = ft_split(&line[i], ',');
