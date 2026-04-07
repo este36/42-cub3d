@@ -6,11 +6,11 @@
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 17:52:19 by nmunari           #+#    #+#             */
-/*   Updated: 2026/04/07 21:26:41 by nmunari          ###   ########.fr       */
+/*   Updated: 2026/04/07 23:42:36 by nmunari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "map.h"
+#include "cub3d.h"
 
 static int	check_xpm_extension(char *path)
 {

@@ -6,11 +6,11 @@
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 14:06:49 by nmunari           #+#    #+#             */
-/*   Updated: 2026/04/07 17:55:05 by nmunari          ###   ########.fr       */
+/*   Updated: 2026/04/07 23:42:43 by nmunari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "map.h"
+#include "cub3d.h"
 
 static int	check_cub_extension(char *filename)
 {

@@ -6,11 +6,11 @@
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 21:50:16 by nmunari           #+#    #+#             */
-/*   Updated: 2026/04/07 23:35:27 by nmunari          ###   ########.fr       */
+/*   Updated: 2026/04/07 23:42:39 by nmunari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "map.h"
+#include "cub3d.h"
 
 static void	fill_rgb_array(int *color_array, char **rgb_tab)
 {
@@ -19,7 +19,7 @@ static void	fill_rgb_array(int *color_array, char **rgb_tab)
 	color_array[2] = ft_atoi(rgb_tab[2]);
 }
 
-int	parse_color(t_render_data *data, char *line, t_type type)
+int	parse_color(t_game *data, char *line, t_type type)
 {
 	char	**rgb_tab;
 	int		i;
