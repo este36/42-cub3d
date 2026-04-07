@@ -6,7 +6,7 @@
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 14:00:51 by nmunari           #+#    #+#             */
-/*   Updated: 2026/04/07 21:26:46 by nmunari          ###   ########.fr       */
+/*   Updated: 2026/04/07 23:29:33 by nmunari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,11 @@ typedef struct s_render_data
 
 int		skip_spaces(char *line);
 int		get_element_type(char *line);
-char	**get_cub(char *filename);
 int		check_cub(char **cub);
+char	**get_cub(char *filename);
 int		check_texture(char *path);
+int		parse_texture(t_render_data *data, char *line, t_type type);
+int		check_color(char *line);
+int		parse_color(t_render_data *data, char *line, t_type type);
 
 #endif
