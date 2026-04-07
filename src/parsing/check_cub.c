@@ -6,7 +6,7 @@
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 16:51:03 by nmunari           #+#    #+#             */
-/*   Updated: 2026/04/07 17:41:41 by nmunari          ###   ########.fr       */
+/*   Updated: 2026/04/07 19:29:37 by nmunari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,18 @@ static int	get_element_type(char *line)
 
 	i = skip_spaces(line);
 	if (ft_strncmp(&line[i], "NO ", 3) == 0)
-		return (1);
+		return (NORTH);
 	if (ft_strncmp(&line[i], "SO ", 3) == 0)
-		return (2);
+		return (SOUTH);
 	if (ft_strncmp(&line[i], "WE ", 3) == 0)
-		return (3);
+		return (WEST);
 	if (ft_strncmp(&line[i], "EA ", 3) == 0)
-		return (4);
+		return (EAST);
 	if (ft_strncmp(&line[i], "F ", 2) == 0)
-		return (5);
+		return (FLOOR);
 	if (ft_strncmp(&line[i], "C ", 2) == 0)
-		return (6);
-	return (0);
+		return (CEILING);
+	return (NONE);
 }
 
 static int	is_map_line(char *line)
