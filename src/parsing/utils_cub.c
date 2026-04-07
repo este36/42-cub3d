@@ -1,34 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.h                                              :+:      :+:    :+:   */
+/*   utils_cub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/07 14:00:51 by nmunari           #+#    #+#             */
-/*   Updated: 2026/04/07 17:03:01 by nmunari          ###   ########.fr       */
+/*   Created: 2026/04/07 17:02:33 by nmunari           #+#    #+#             */
+/*   Updated: 2026/04/07 17:02:43 by nmunari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAP_H
-# define MAP_H
+#include "map.h"
 
-# include "cub3d.h"
-
-typedef struct s_map
+int	skip_spaces(char *line)
 {
-	char	*no_path;
-	char	*so_path;
-	char	*we_path;
-	char	*ea_path;
-	int		floor_color[3];
-	int		ceiling_color[3];
-	int		map_height;
-	int		map_width;
-	char	**map;
-}	t_map;
+	int	i;
 
-int		skip_spaces(char *line);
-char	**get_cub(char *filename);
-
-#endif
+	i = 0;
+	while (line[i] && ft_isspace(line[i]))
+		i++;
+	return (i);
+}
