@@ -6,7 +6,7 @@
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 16:56:15 by nmunari           #+#    #+#             */
-/*   Updated: 2026/04/02 18:45:50 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/07 14:45:16 by nmunari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <stdint.h>
 # include <unistd.h>
 # include <stdarg.h>
+# include "gnl/get_next_line.h"
 
 # define ANSI_RED    "\x1b[1;31m"
 # define ANSI_RESET   "\x1b[0m"
