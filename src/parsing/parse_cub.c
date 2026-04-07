@@ -6,13 +6,13 @@
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 14:06:49 by nmunari           #+#    #+#             */
-/*   Updated: 2026/04/07 17:37:10 by nmunari          ###   ########.fr       */
+/*   Updated: 2026/04/07 17:55:05 by nmunari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "map.h"
 
-static int	check_file_extension(char *filename)
+static int	check_cub_extension(char *filename)
 {
 	size_t	len;
 
@@ -73,7 +73,7 @@ char	**get_cub(char *filename)
 	int		lines;
 	char	**cub;
 
-	if (!check_file_extension(filename))
+	if (!check_cub_extension(filename))
 		return (NULL);
 	lines = get_file_size(filename);
 	if (lines < 0)
