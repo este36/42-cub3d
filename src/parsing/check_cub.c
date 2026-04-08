@@ -6,30 +6,11 @@
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 16:51:03 by nmunari           #+#    #+#             */
-/*   Updated: 2026/04/08 17:17:18 by nmunari          ###   ########.fr       */
+/*   Updated: 2026/04/08 17:42:23 by nmunari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-static int	is_map_line(char *line)
-{
-	int	i;
-	int	has_content;
-
-	i = 0;
-	has_content = 0;
-	while (line[i])
-	{
-		if (line[i] == '0' || line[i] == '1' || line[i] == 'N'
-			||line[i] == 'S' || line[i] == 'E' || line[i] == 'W')
-			has_content = 1;
-		else if (!ft_isspace(line[i]) && line[i] != '\n')
-			return (0);
-		i++;
-	}
-	return (has_content);
-}
 
 static int	parse_element(char *line, int *flags)
 {
