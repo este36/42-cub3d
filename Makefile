@@ -17,9 +17,10 @@ SRCS_PARSING	= src/parsing/parse_cub.c\
 				  src/parsing/check_colors.c\
 				  src/parsing/parse_colors.c\
 				  src/parsing/parse_map.c\
-				  src/parsing/check_map.c\
 				  src/parsing/check_player.c\
-				  src/parsing/check_walls.c
+				  src/parsing/check_walls.c\
+				  src/parsing/init_game.c\
+				  src/parsing/tester_cub.c
 
 SRCS			= src/main.c\
 				  src/utils.c\
