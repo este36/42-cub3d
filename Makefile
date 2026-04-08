@@ -71,7 +71,7 @@ $(MINILIBX_DIR):
 
 test: $(MINILIBX) $(LIBFT) $(filter-out obj/main.o, $(OBJS))
 	$(CC) -o test_main $(CFLAGS) $(INCLUDE) $(filter %.o, $^) $(LIBFT) $(LDFLAGS)
-	@./test_main
+	@valgrind --leak-check=full --show-leak-kinds=all ./test_main
 
 norm:
 	norminette src include $(LIBFT_DIR) | grep Error || true
