@@ -6,7 +6,7 @@
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/08 17:19:04 by nmunari           #+#    #+#             */
-/*   Updated: 2026/04/08 18:58:41 by nmunari          ###   ########.fr       */
+/*   Updated: 2026/04/08 20:24:19 by nmunari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,23 @@ static char	**extract_map(char **cub)
 		i++;
 	}
 	return (map);
+}
+
+int	parse_map(char **cub, t_game *data)
+{
+	char	**map;
+
+	map = extract_map(cub);
+	if (!map)
+		return (0);
+	if (!check_player(map))
+		return (free_tab(map), 0);
+	if (!check_walls(map))
+		return (free_tab(map), 0);
+	if (!find_player(map, data))
+		return (free_tab(map), 0);
+	data->map = map;
+	return (1);
 }
 
 /* int	main(void)
