@@ -6,7 +6,7 @@
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 16:51:03 by nmunari           #+#    #+#             */
-/*   Updated: 2026/04/07 23:42:29 by nmunari          ###   ########.fr       */
+/*   Updated: 2026/04/08 17:17:18 by nmunari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,7 @@ static int	is_map_line(char *line)
 			||line[i] == 'S' || line[i] == 'E' || line[i] == 'W')
 			has_content = 1;
 		else if (!ft_isspace(line[i]) && line[i] != '\n')
-		{
 			return (0);
-		}
 		i++;
 	}
 	return (has_content);
