@@ -6,7 +6,7 @@
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 17:02:33 by nmunari           #+#    #+#             */
-/*   Updated: 2026/04/08 22:17:46 by nmunari          ###   ########.fr       */
+/*   Updated: 2026/04/08 22:27:46 by nmunari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,13 +75,4 @@ int	get_element_type(char *line)
 	if (ft_strncmp(&line[i], "C ", 2) == 0)
 		return (CEILING);
 	return (NONE);
-}
-
-void	free_game_data(t_game *data)
-{
-	free(data->no_path);
-	free(data->so_path);
-	free(data->we_path);
-	free(data->ea_path);
-	free_tab(data->map);
 }
