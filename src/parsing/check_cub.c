@@ -6,7 +6,7 @@
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 16:51:03 by nmunari           #+#    #+#             */
-/*   Updated: 2026/04/08 18:23:02 by nmunari          ###   ########.fr       */
+/*   Updated: 2026/04/08 18:23:49 by nmunari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	check_cub(char **cub)
 		if (flags[i] == 0)
 			return (printf("Error\nMissing one or more identifiers\n"), 0);
 	}
-	if (map_state == 0)
+	if (map_state == MAP_START)
 		return (printf("Error\nNo map found in file\n"), 0);
 	return (1);
 }
