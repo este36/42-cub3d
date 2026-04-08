@@ -6,7 +6,7 @@
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/08 19:15:04 by nmunari           #+#    #+#             */
-/*   Updated: 2026/04/08 20:24:17 by nmunari          ###   ########.fr       */
+/*   Updated: 2026/04/08 22:35:20 by nmunari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ static int	is_valid_neighbor(char **map, int row, int col)
 	if (row < 0 || !map[row])
 		return (0);
 	if (col < 0 || col >= (int)ft_strlen(map[row]))
-		return (0);
-	if (map[row][col] == ' ')
 		return (0);
 	return (1);
 }
