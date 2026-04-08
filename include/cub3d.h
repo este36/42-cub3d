@@ -6,7 +6,7 @@
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 14:00:51 by nmunari           #+#    #+#             */
-/*   Updated: 2026/04/07 23:42:06 by nmunari          ###   ########.fr       */
+/*   Updated: 2026/04/08 17:53:18 by nmunari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,15 @@ typedef struct s_game
 	int		map_height;
 	int		map_width;
 	char	**map;
+	double	player_x;
+	double	player_y;
+	char	player_dir;
 }	t_game;
 
 int		skip_spaces(char *line);
 int		get_element_type(char *line);
+int		is_map_line(char *line);
+int		is_empty_line(char *line);
 int		check_cub(char **cub);
 char	**get_cub(char *filename);
 int		check_texture(char *path);
