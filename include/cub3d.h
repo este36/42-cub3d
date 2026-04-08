@@ -6,7 +6,7 @@
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 14:00:51 by nmunari           #+#    #+#             */
-/*   Updated: 2026/04/08 17:53:18 by nmunari          ###   ########.fr       */
+/*   Updated: 2026/04/08 22:39:11 by nmunari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,14 @@ typedef enum e_map_state
 	MAP_FINISHED
 }	t_map_state;
 
+typedef enum e_dir
+{
+	DIR_NORTH,
+	DIR_SOUTH,
+	DIR_EAST,
+	DIR_WEST
+}	t_dir;
+
 typedef struct s_game
 {
 	char	*no_path;
@@ -43,12 +51,10 @@ typedef struct s_game
 	char	*ea_path;
 	int		floor_color[3];
 	int		ceiling_color[3];
-	int		map_height;
-	int		map_width;
 	char	**map;
 	double	player_x;
 	double	player_y;
-	char	player_dir;
+	t_dir	player_dir;
 }	t_game;
 
 int		skip_spaces(char *line);
@@ -61,5 +67,12 @@ int		check_texture(char *path);
 int		parse_texture(t_game *data, char *line, t_type type);
 int		check_color(char *line);
 int		parse_color(t_game *data, char *line, t_type type);
+int		check_player(char **map);
+int		check_walls(char **map);
+int		parse_map(char **cub, t_game *data);
+int		find_player(char **map, t_game *data);
+int		init_game(t_game *data, char *filename);
+void	free_game_data(t_game *data);
+void	print_game_data(t_game *data);
 
 #endif
