@@ -6,7 +6,7 @@
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 16:51:03 by nmunari           #+#    #+#             */
-/*   Updated: 2026/04/08 18:23:49 by nmunari          ###   ########.fr       */
+/*   Updated: 2026/04/08 18:57:09 by nmunari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	parse_element(char *line, int *flags)
 	return (1);
 }
 
-static int	process_line(char *line, int *flags, int *map_state)
+static int	process_line(char *line, int *flags, t_map_state *map_state)
 {
 	int	i;
 
