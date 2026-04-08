@@ -15,7 +15,8 @@ SRCS_PARSING	= src/parsing/parse_cub.c\
 				  src/parsing/check_textures.c\
 				  src/parsing/parse_textures.c\
 				  src/parsing/check_colors.c\
-				  src/parsing/parse_colors.c
+				  src/parsing/parse_colors.c\
+				  src/parsing/parse_map.c
 
 SRCS			= src/main.c\
 				  src/utils.c\
