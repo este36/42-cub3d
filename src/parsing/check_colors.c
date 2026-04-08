@@ -6,7 +6,7 @@
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 21:50:09 by nmunari           #+#    #+#             */
-/*   Updated: 2026/04/08 01:18:49 by nmunari          ###   ########.fr       */
+/*   Updated: 2026/04/08 17:59:46 by nmunari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,16 @@ static int	is_valid_number(char *str)
 
 	i = 0;
 	has_digit = 0;
+	while (str[i] && ft_isspace(str[i]))
+		i++;
+	while (str[i] && ft_isdigit(str[i]))
+	{
+		has_digit = 1;
+		i++;
+	}
 	while (str[i] && str[i] != '\n')
 	{
-		if (ft_isdigit(str[i]))
-			has_digit = 1;
-		else if (!ft_isspace(str[i]))
+		if (!ft_isspace(str[i]))
 			return (0);
 		i++;
 	}
