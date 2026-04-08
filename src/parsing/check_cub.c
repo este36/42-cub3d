@@ -6,7 +6,7 @@
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 16:51:03 by nmunari           #+#    #+#             */
-/*   Updated: 2026/04/08 17:42:23 by nmunari          ###   ########.fr       */
+/*   Updated: 2026/04/08 18:23:02 by nmunari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,15 +49,15 @@ static int	process_line(char *line, int *flags, int *map_state)
 
 int	check_cub(char **cub)
 {
-	int	i;
-	int	flags[7];
-	int	map_state;
+	int			i;
+	int			flags[7];
+	t_map_state	map_state;
 
 	i = -1;
 	while (++i < 7)
 		flags[i] = 0;
 	i = 0;
-	map_state = 0;
+	map_state = MAP_START;
 	while (cub[i])
 	{
 		if (!process_line(cub[i], flags, &map_state))
