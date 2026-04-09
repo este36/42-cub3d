@@ -6,13 +6,13 @@
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/08 22:15:22 by nmunari           #+#    #+#             */
-/*   Updated: 2026/04/08 22:45:28 by nmunari          ###   ########.fr       */
+/*   Updated: 2026/04/09 14:24:58 by nmunari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	test_map(char *path)
+/* static void	test_map(char *path)
 {
 	t_game	data;
 
@@ -26,7 +26,7 @@ static void	test_map(char *path)
 		print_game_data(&data);
 	}
 	free_game_data(&data);
-}
+} */
 
 /* int	main(void)
 {
