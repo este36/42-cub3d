@@ -9,6 +9,19 @@ INCLUDE			= -I$(LIBFT_DIR)/ft_printf -I$(LIBFT_DIR) -I$(MINILIBX_DIR) -Iinclude
 LDFLAGS			= -lmlx -L$(MINILIBX_DIR) -lXext -lX11 -lm 
 MLX_CFLAGS		= CFLAGS='-O3 --std=gnu89 -g'
 
+SRCS_PARSING	= src/parsing/parse_cub.c\
+				  src/parsing/check_cub.c\
+				  src/parsing/utils_cub.c\
+				  src/parsing/check_textures.c\
+				  src/parsing/parse_textures.c\
+				  src/parsing/check_colors.c\
+				  src/parsing/parse_colors.c\
+				  src/parsing/parse_map.c\
+				  src/parsing/check_player.c\
+				  src/parsing/check_walls.c\
+				  src/parsing/init_game.c\
+				  src/parsing/tester_cub.c
+
 SRCS			= src/main.c\
 				  src/utils.c\
 				  src/window/create_window.c\
@@ -25,6 +38,7 @@ SRCS			= src/main.c\
 				  src/window/textbox.c\
 				  src/window/image.c\
 				  src/window/render_textbox.c\
+				  $(SRCS_PARSING)
 
 OBJS=$(SRCS:src/%.c=obj/%.o)
 
@@ -54,6 +68,10 @@ $(MINILIBX): | $(MINILIBX_DIR)
 $(MINILIBX_DIR):
 	git clone https://github.com/42paris/minilibx-linux.git
 	rm -rf $(MINILIBX_DIR)/.git
+
+test: $(MINILIBX) $(LIBFT) $(filter-out obj/main.o, $(OBJS))
+	$(CC) -o test_main $(CFLAGS) $(INCLUDE) $(filter %.o, $^) $(LIBFT) $(LDFLAGS)
+	@valgrind --leak-check=full --show-leak-kinds=all ./test_main
 
 norm:
 	norminette src include $(LIBFT_DIR) | grep Error || true
