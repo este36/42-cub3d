@@ -6,7 +6,7 @@
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 14:00:51 by nmunari           #+#    #+#             */
-/*   Updated: 2026/04/10 15:26:37 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/10 15:36:08 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,8 @@ typedef enum e_map_state
 	MAP_FINISHED
 }	t_map_state;
 
-typedef enum e_dir
-{
-	DIR_NORTH,
-	DIR_SOUTH,
-	DIR_EAST,
-	DIR_WEST
-}	t_dir;
-
 typedef struct s_player
 {
-	t_dir	start_dir;
 	t_vec2	pos;
 	t_vec2	dir;
 	double	angle;
