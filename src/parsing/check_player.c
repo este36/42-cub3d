@@ -6,11 +6,12 @@
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/08 19:05:05 by nmunari           #+#    #+#             */
-/*   Updated: 2026/04/08 20:24:16 by nmunari          ###   ########.fr       */
+/*   Updated: 2026/04/10 15:42:52 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include "math.h"
 
 static int	is_player(char c)
 {
@@ -43,15 +44,19 @@ int	check_player(char **map)
 	return (1);
 }
 
-static t_dir	get_player_dir(char c)
+static void	init_player(t_player *p, int row, int col, char dir)
 {
-	if (c == 'N')
-		return (DIR_NORTH);
-	if (c == 'S')
-		return (DIR_SOUTH);
-	if (c == 'E')
-		return (DIR_EAST);
-	return (DIR_WEST);
+	ft_bzero(p, sizeof(t_player));
+	p->pos.x = (double)col + 0.5;
+	p->pos.y = (double)row + 0.5;
+	if (dir == 'W')
+		p->angle = M_PI;
+	if (dir == 'E')
+		p->angle = 0;
+	if (dir == 'N')
+		p->angle = 3 * M_PI / 2;
+	if (dir == 'S')
+		p->angle = M_PI / 2;
 }
 
 int	find_player(char **map, t_game *data)
@@ -67,9 +72,7 @@ int	find_player(char **map, t_game *data)
 		{
 			if (is_player(map[row][col]))
 			{
-				data->player_x = col;
-				data->player_y = row;
-				data->player_dir = get_player_dir(map[row][col]);
+				init_player(&data->player, row, col, map[row][col]);
 				return (1);
 			}
 			col++;

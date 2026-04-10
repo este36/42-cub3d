@@ -6,7 +6,7 @@
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 17:02:33 by nmunari           #+#    #+#             */
-/*   Updated: 2026/04/08 22:39:14 by nmunari          ###   ########.fr       */
+/*   Updated: 2026/04/10 15:36:36 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,8 @@ void	print_game_data(t_game *data)
 		data->floor_color[1], data->floor_color[2]);
 	printf("  C  : %d, %d, %d\n", data->ceiling_color[0],
 		data->ceiling_color[1], data->ceiling_color[2]);
-	printf("  POS: (%.1f, %.1f)  DIR: %d\n",
-		data->player_x, data->player_y, data->player_dir);
+	printf("  POS: (%.1f, %.1f)  DIR: %f\n",
+		data->player.pos.x, data->player.pos.y, data->player.angle);
 	printf("-------- MAP ------------------\n");
 	i = 0;
 	while (data->map[i])
