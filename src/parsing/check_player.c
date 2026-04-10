@@ -6,7 +6,7 @@
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/08 19:05:05 by nmunari           #+#    #+#             */
-/*   Updated: 2026/04/10 15:30:59 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/10 15:42:52 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	check_player(char **map)
 
 static void	init_player(t_player *p, int row, int col, char dir)
 {
-	ft_bzero(p, sizeof(p));
+	ft_bzero(p, sizeof(t_player));
 	p->pos.x = (double)col + 0.5;
 	p->pos.y = (double)row + 0.5;
 	if (dir == 'W')
