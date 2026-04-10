@@ -6,7 +6,7 @@
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 14:00:51 by nmunari           #+#    #+#             */
-/*   Updated: 2026/04/08 22:39:11 by nmunari          ###   ########.fr       */
+/*   Updated: 2026/04/10 15:26:37 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CUB3D_H
 
 # include "libft.h"
+# include "vec2.h"
 # include <fcntl.h>
 # include <stdio.h>
 
@@ -43,18 +44,24 @@ typedef enum e_dir
 	DIR_WEST
 }	t_dir;
 
+typedef struct s_player
+{
+	t_dir	start_dir;
+	t_vec2	pos;
+	t_vec2	dir;
+	double	angle;
+}	t_player;
+
 typedef struct s_game
 {
-	char	*no_path;
-	char	*so_path;
-	char	*we_path;
-	char	*ea_path;
-	int		floor_color[3];
-	int		ceiling_color[3];
-	char	**map;
-	double	player_x;
-	double	player_y;
-	t_dir	player_dir;
+	char		*no_path;
+	char		*so_path;
+	char		*we_path;
+	char		*ea_path;
+	int			floor_color[3];
+	int			ceiling_color[3];
+	char		**map;
+	t_player	player;
 }	t_game;
 
 int		skip_spaces(char *line);
