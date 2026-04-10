@@ -38,6 +38,8 @@ SRCS			= src/main.c\
 				  src/window/textbox.c\
 				  src/window/image.c\
 				  src/window/render_textbox.c\
+				  src/vec2/vec2_ops_1.c\
+				  src/vec2/vec2_ops_2.c\
 				  $(SRCS_PARSING)
 
 OBJS=$(SRCS:src/%.c=obj/%.o)
