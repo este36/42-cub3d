@@ -6,14 +6,14 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/11 16:18:55 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/11 16:20:41 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/16 18:38:25 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSING_H
-#define PARSING_H
+# define PARSING_H
 
-#include "cub3d.h"
+typedef struct s_game	t_game;
 
 typedef enum e_type
 {
@@ -51,6 +51,5 @@ void	free_game_data(t_game *data);
 void	print_game_data(t_game *data);
 
 int		init_game(t_game *data, char *filename);
-
 
 #endif // PARSING_H

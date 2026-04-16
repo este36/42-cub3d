@@ -6,11 +6,12 @@
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 18:00:44 by nmunari           #+#    #+#             */
-/*   Updated: 2026/04/11 16:23:06 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/16 18:42:16 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
+#include "cub3d.h"
 
 static char	*get_texture_path(char *line)
 {

@@ -6,11 +6,12 @@
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 21:50:09 by nmunari           #+#    #+#             */
-/*   Updated: 2026/04/11 16:23:14 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/16 18:42:40 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
+#include "cub3d.h"
 
 static int	count_commas(char *str)
 {
