@@ -6,11 +6,11 @@
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 21:50:16 by nmunari           #+#    #+#             */
-/*   Updated: 2026/04/07 23:44:00 by nmunari          ###   ########.fr       */
+/*   Updated: 2026/04/11 16:23:23 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "parsing.h"
 
 static void	fill_rgb_array(int *color_array, char **rgb_tab)
 {

@@ -6,11 +6,11 @@
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 17:02:33 by nmunari           #+#    #+#             */
-/*   Updated: 2026/04/10 15:36:36 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/11 16:23:00 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "parsing.h"
 
 int	skip_spaces(char *line)
 {

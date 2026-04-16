@@ -6,11 +6,11 @@
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/08 17:19:04 by nmunari           #+#    #+#             */
-/*   Updated: 2026/04/08 20:24:19 by nmunari          ###   ########.fr       */
+/*   Updated: 2026/04/11 16:23:31 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "parsing.h"
 
 static int	find_map_start(char **cub)
 {

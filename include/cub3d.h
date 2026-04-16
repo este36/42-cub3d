@@ -6,7 +6,7 @@
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 14:00:51 by nmunari           #+#    #+#             */
-/*   Updated: 2026/04/10 15:36:08 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/16 12:53:18 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,24 +17,7 @@
 # include "vec2.h"
 # include <fcntl.h>
 # include <stdio.h>
-
-typedef enum e_type
-{
-	NONE,
-	NORTH,
-	SOUTH,
-	WEST,
-	EAST,
-	FLOOR,
-	CEILING
-}	t_type;
-
-typedef enum e_map_state
-{
-	MAP_START,
-	MAP_READING,
-	MAP_FINISHED
-}	t_map_state;
+# include "window.h"
 
 typedef struct s_player
 {
@@ -43,34 +26,28 @@ typedef struct s_player
 	double	angle;
 }	t_player;
 
+enum e_mode
+{
+	MODE_GAME,
+	MODE_PLAYGROUND,
+};
+
 typedef struct s_game
 {
-	char		*no_path;
-	char		*so_path;
-	char		*we_path;
-	char		*ea_path;
-	int			floor_color[3];
-	int			ceiling_color[3];
-	char		**map;
-	t_player	player;
+	t_window		*win;
+	enum e_mode		mode;
+	char			*no_path;
+	char			*so_path;
+	char			*we_path;
+	char			*ea_path;
+	int				floor_color[3];
+	int				ceiling_color[3];
+	char			**map;
+	t_player		player;
 }	t_game;
 
-int		skip_spaces(char *line);
-int		get_element_type(char *line);
-int		is_map_line(char *line);
-int		is_empty_line(char *line);
-int		check_cub(char **cub);
-char	**get_cub(char *filename);
-int		check_texture(char *path);
-int		parse_texture(t_game *data, char *line, t_type type);
-int		check_color(char *line);
-int		parse_color(t_game *data, char *line, t_type type);
-int		check_player(char **map);
-int		check_walls(char **map);
-int		parse_map(char **cub, t_game *data);
-int		find_player(char **map, t_game *data);
-int		init_game(t_game *data, char *filename);
-void	free_game_data(t_game *data);
-void	print_game_data(t_game *data);
+# define STEP_SPEED		150.0
+# define CELL_HEIGHT	10
+# define CELL_WIDTH		10
 
 #endif
