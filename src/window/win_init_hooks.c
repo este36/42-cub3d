@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 19:44:02 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/04 12:05:05 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/11 17:01:51 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 
 int	on_win_keydown(int ev, t_window *w)
 {
-	if (ev < 256)
-		w->keys[ev] = true;
 	if (ev == XK_Escape)
 	{
 		w->should_close = true;
@@ -27,6 +25,8 @@ int	on_win_keydown(int ev, t_window *w)
 	}
 	if (w->on_keydown)
 		w->on_keydown(ev, w);
+	if (ev < 256)
+		w->keys[ev] = true;
 	if (ev == XK_Right)
 		w->k_right = true;
 	else if (ev == XK_Left)
@@ -88,6 +88,7 @@ int	on_win_mouseup(int ev, int x, int y, t_window *w)
 void	win_init_hooks(t_window *w)
 {
 	mlx_hook(w->ptr, KeyPress, KeyPressMask, (void *)on_win_keydown, w);
+	mlx_hook(w->ptr, KeyRelease, KeyReleaseMask, (void *)on_win_keyup, w);
 	mlx_hook(w->ptr,
 		ButtonPress, ButtonPressMask, (void *)on_win_mousedown, w);
 	mlx_hook(w->ptr,
