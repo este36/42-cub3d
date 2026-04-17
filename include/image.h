@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 17:54:21 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/04 20:04:56 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/17 17:18:30 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,6 @@ void	fill_rectangle(t_image *img, t_rectangle *r, t_color color);
 void	draw_rectangle(t_image *img, t_rectangle *r,
 			size_t thickness, t_color color);
 void	draw_line(t_image *img, t_line *line, int thickness, t_color color);
+void	draw_point(t_image *img, t_point pos, size_t thickness, t_color color);
 
 #endif //  IMAGE_H

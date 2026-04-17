@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/09 12:11:18 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/16 12:05:15 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/17 23:07:21 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 t_vec2	vec2_mul(t_vec2 a, t_vec2 b)
 {
-	return ((t_vec2){a.x * a.x, b.x * b.x});
+	return ((t_vec2){a.x * b.x, a.y * b.y});
 }
 
 double	vec2_dot(t_vec2 a, t_vec2 b)

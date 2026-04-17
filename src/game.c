@@ -1,33 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/03 00:55:56 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/17 17:08:53 by emercier         ###   ########.fr       */
+/*   Created: 2026/04/17 17:08:02 by emercier          #+#    #+#             */
+/*   Updated: 2026/04/17 17:10:05 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sys/time.h>
-#include <stdlib.h>
-#include "vec2.h"
-#include "image.h"
+#include "cub3d.h"
 
-long	now_ms(void)
+void	render_game(t_game *g)
 {
-	struct timeval	tv;
-
-	if (gettimeofday(&tv, NULL) != 0)
-		return (-1);
-	return (tv.tv_sec * 1000L + tv.tv_usec / 1000L);
-}
-
-t_point	to_screen(t_vec2 p, t_point origin, t_rectangle cell)
-{
-	return ((t_point){
-		origin.x + p.x * cell.width,
-		origin.y + p.y * cell.height
-	});
+	clear_background(g->win, 0xffcc11);
 }
