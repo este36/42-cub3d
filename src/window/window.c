@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/04 13:02:51 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/11 16:47:21 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/18 00:36:34 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	update_fps(t_window *w)
 	long			delta;
 
 	frame_count++;
+	w->frame++;
 	if (frame_count >= 20)
 	{
 		now = now_ms();

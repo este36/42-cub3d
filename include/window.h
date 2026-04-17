@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 12:21:31 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/16 11:49:03 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/18 01:07:45 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_window
 	char				*title;
 	bool				should_close;
 	bool				should_render;
+	bool				ignore_mouse;
 	size_t				frame;
 	long				last_frame;
 	int					fps;

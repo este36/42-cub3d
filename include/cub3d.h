@@ -6,7 +6,7 @@
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 14:00:51 by nmunari           #+#    #+#             */
-/*   Updated: 2026/04/17 17:45:51 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/18 01:15:39 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,15 @@ typedef struct s_game
 	int				ceiling_color[3];
 	char			**map;
 	t_player		player;
+	int				screen_width;
+	int				screen_height;
 }	t_game;
 
 # define STEP_SPEED		150.0
 # define CELL_HEIGHT	10
 # define CELL_WIDTH		10
 # define SCALE			2
+# define SENSITIVITY	0.01
 
 t_point	to_screen(t_vec2 p, t_point origin, t_rectangle cell);
 t_point	render_minimap(t_game *g, t_point p, double scale);
