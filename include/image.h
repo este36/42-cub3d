@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 17:54:21 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/17 17:18:30 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/19 00:54:47 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,18 @@
 # include <stddef.h>
 
 typedef uint32_t	t_color;
+
+typedef union s_rgb
+{
+	struct
+	{
+		uint8_t	r;
+		uint8_t	g;
+		uint8_t	b;
+		uint8_t	a;
+	};
+	t_color	val;
+}	t_rgb;
 
 typedef struct s_point
 {
