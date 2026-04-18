@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/09 12:04:21 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/16 11:43:03 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/18 21:45:49 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_vec2	vec2(double x, double y);
 t_point	vec2_to_point(t_vec2 a);
 t_vec2	point_to_vec2(t_point a);
 
-# define V2_FMT "{x=%f, y=%f}"
-# define V2_ARG(v) (v).x, (v).y
+// # define V2_FMT "{x=%f, y=%f}"
+// # define V2_ARG(v) (v).x, (v).y
 
 #endif // VEC2_H
