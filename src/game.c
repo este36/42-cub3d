@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/17 17:08:02 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/19 00:52:43 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/19 01:27:11 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,23 +62,80 @@ void	draw_scene(t_game *game)
 	}
 }
 
-void	render_game(t_game *game)
+
+void	draw_ceiling(t_game *game)
 {
 	t_rectangle	rec;
-	t_rgb		color;
+	t_rgb		base;
+	t_rgb		shade;
+	double		ratio;
+	int			i;
 
 	rec = (t_rectangle){
 		.width = game->win->screen.width,
-		.height = game->win->screen.height / 2,
+		.height = 1
 	};
-	color = (t_rgb){.r = game->ceiling_color[0], .g = game->ceiling_color[1],
+	base = (t_rgb){.r = game->ceiling_color[0], .g = game->ceiling_color[1],
 		.b = game->ceiling_color[2]};
-	fill_rectangle(&game->win->screen,
-		&rec, color.val);
-	color = (t_rgb){.r = game->floor_color[0], .g = game->floor_color[1],
+	i = 0;
+	while (i < game->win->screen.height / 2)
+	{
+		ratio = (double)(game->win->screen.height - i) / (double)game->win->screen.height;
+		shade = (t_rgb){.r = base.r * ratio, .g = base.g * ratio,
+			.b = base.b * ratio};
+		rec.pos.y = i;
+		fill_rectangle(&game->win->screen,
+			&rec, shade.val);
+		i++;
+	}
+}
+
+void	draw_floor(t_game *game)
+{
+	t_rectangle	rec;
+	t_rgb		base;
+	t_rgb		shade;
+	double		ratio;
+	int			i;
+
+	rec = (t_rectangle){
+		.width = game->win->screen.width,
+		.height = 1
+	};
+	base = (t_rgb){.r = game->floor_color[0], .g = game->floor_color[1],
 		.b = game->floor_color[2]};
-	rec.pos.y = game->win->screen.height / 2;
-	fill_rectangle(&game->win->screen,
-		&rec, color.val);
+	i = game->win->screen.height;
+	while (i > game->win->screen.height / 2)
+	{
+		ratio = (double)i / (double)game->win->screen.height;
+		shade = (t_rgb){.r = base.r * ratio, .g = base.g * ratio,
+			.b = base.b * ratio};
+		rec.pos.y = i;
+		fill_rectangle(&game->win->screen,
+			&rec, shade.val);
+		i--;
+	}
+}
+
+void	render_game(t_game *game)
+{
+//	t_rectangle	rec;
+//	t_rgb		color;
+
+// 	rec = (t_rectangle){
+// 		.width = game->win->screen.width,
+// 		.height = game->win->screen.height / 2,
+// 	};
+//	color = (t_rgb){.r = game->ceiling_color[0], .g = game->ceiling_color[1],
+//		.b = game->ceiling_color[2]};
+//	fill_rectangle(&game->win->screen,
+//		&rec, color.val);
+// 	color = (t_rgb){.r = game->floor_color[0], .g = game->floor_color[1],
+// 		.b = game->floor_color[2]};
+// 	rec.pos.y = game->win->screen.height / 2;
+// 	fill_rectangle(&game->win->screen,
+// 		&rec, color.val);
+	draw_ceiling(game);
+	draw_floor(game);
 	draw_scene(game);
 }
