@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 00:55:56 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/17 17:08:53 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/18 12:21:38 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include <stdlib.h>
 #include "vec2.h"
 #include "image.h"
+#include "cub3d.h"
+#include <math.h>
 
 long	now_ms(void)
 {
@@ -30,4 +32,12 @@ t_point	to_screen(t_vec2 p, t_point origin, t_rectangle cell)
 		origin.x + p.x * cell.width,
 		origin.y + p.y * cell.height
 	});
+}
+
+void	init_fov(t_game *game)
+{
+	const double	fov = M_PI / 3.0;
+
+	game->fov_half = fov * 0.5f;
+	game->fov_step = fov / game->win->screen.width;
 }

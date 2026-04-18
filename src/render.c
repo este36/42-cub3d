@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raycaster.h                                        :+:      :+:    :+:   */
+/*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/16 18:45:25 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/18 19:41:37 by emercier         ###   ########.fr       */
+/*   Created: 2026/04/18 12:38:03 by emercier          #+#    #+#             */
+/*   Updated: 2026/04/18 20:27:04 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RAYCASTER_H
-# define RAYCASTER_H
+#include "cub3d.h"
 
-# include "vec2.h"
-
-typedef struct s_ray
+int	render(t_window *w)
 {
-	t_vec2	start;
-	t_vec2	dir;
-	t_vec2	hit;
-	double	distance;
-	double	perp_distance;
-	bool	tile_found;
-	bool	side;
-	t_vec2	_unit_step_size;
-	t_vec2	_length_1d;
-	t_point	_map_check;
-	t_point	_step;
-}	t_ray;
+	t_game	*g;
 
-# define MAX_DISTANCE 10000.0f
-
-t_ray	raycast(char **map, t_vec2 ray_start, t_vec2 ray_dir);
-
-#endif // RAYCASTER_H
+	g = w->user_data;
+	move_player(g, w, STEP_SPEED * w->delta_time);
+	if (g->mode == MODE_GAME)
+		render_game(g);
+	if (g->mode == MODE_PLAYGROUND)
+		render_playground(g);
+	target_fps(50);
+	return (0);
+}

@@ -47,6 +47,8 @@ SRCS			= \
 				  src/playground/render.c\
 				  src/playground/render_minimap.c\
 				  src/game.c\
+				  src/render.c\
+				  src/move_player.c\
 
 OBJS=$(SRCS:src/%.c=obj/%.o)
 
