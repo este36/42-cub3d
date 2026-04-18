@@ -54,7 +54,10 @@ void	draw_scene(t_game *game)
 		dir = vec2_rot(game->player.dir, angle);
 		ray = raycast(game->map, game->player.pos, dir);
 		if (ray.tile_found)
+		{
+			ray.perp_distance = ray.distance * cos(angle);
 			draw_hit(game, &ray, i);
+		}
 		i++;
 	}
 }
