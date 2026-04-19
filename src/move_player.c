@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/18 20:19:25 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/18 20:33:16 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/19 02:32:16 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@ void	move_player(t_game *g, t_window *w, float step)
 	t_vec2	move;
 	t_vec2	new_pos;
 
+	if (w->k_left)
+		g->player.dir = vec2_rot(g->player.dir, -SENSITIVITY * 2.5);
+	if (w->k_right)
+		g->player.dir = vec2_rot(g->player.dir, SENSITIVITY * 2.5);
 	move = (t_vec2){0};
 	if (w->keys['w'])
 		move = vec2_add(move, vec2_scale(g->player.dir, step));
