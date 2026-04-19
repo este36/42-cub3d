@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 19:02:47 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/18 12:38:18 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/19 13:48:31 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,10 @@ int	main(int argc, char **argv)
 	init_window(&window);
 	create_window(&window);
 	init_fov(&game);
+	if (compute_vignette(&game) != 0)
+		return (1);
 	show_window(&window);
 	destroy_window(&window);
+	// free(game.vignette);
 	return (0);
 }

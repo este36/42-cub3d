@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game.c                                             :+:      :+:    :+:   */
+/*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/17 17:08:02 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/19 01:27:11 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/19 14:18:46 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 t_color	shadow_distance(t_color color, double distance)
 {
-	const double	shade = exp(-distance / 20.0);
+	const double	shade = fmax(exp(-distance / 20.0), 0.5);
 	const int		r = ((color >> 16) & 0xFF) * shade;
 	const int		g = ((color >> 8) & 0xFF) * shade;
 	const int		b = (color & 0xFF) * shade;
@@ -31,11 +31,11 @@ static void	draw_hit(t_game *game, t_ray *ray, int index)
 	rec = (t_rectangle){
 		.pos = {index, 0},
 		.width = 1,
-		.height = game->win->screen.height / ray->perp_distance
+		.height = SCREEN_HEIGHT / ray->perp_distance
 	};
-	if (rec.height > game->win->screen.height)
-		rec.height = game->win->screen.height;
-	rec.pos.y = abs(game->win->screen.height - rec.height) / 2;
+	if (rec.height > SCREEN_HEIGHT)
+		rec.height = SCREEN_HEIGHT;
+	rec.pos.y = abs(SCREEN_HEIGHT - rec.height) / 2;
 	fill_rectangle(&game->win->screen,
 		&rec, shadow_distance(0xff0000, ray->distance));
 }
@@ -48,7 +48,7 @@ void	draw_scene(t_game *game)
 	int		i;
 
 	i = 0;
-	while (i <= game->win->screen.width)
+	while (i <= SCREEN_WIDTH)
 	{
 		angle = -game->fov_half + (i * game->fov_step);
 		dir = vec2_rot(game->player.dir, angle);
@@ -62,7 +62,6 @@ void	draw_scene(t_game *game)
 	}
 }
 
-
 void	draw_ceiling(t_game *game)
 {
 	t_rectangle	rec;
@@ -72,15 +71,15 @@ void	draw_ceiling(t_game *game)
 	int			i;
 
 	rec = (t_rectangle){
-		.width = game->win->screen.width,
+		.width = SCREEN_WIDTH,
 		.height = 1
 	};
 	base = (t_rgb){.r = game->ceiling_color[0], .g = game->ceiling_color[1],
 		.b = game->ceiling_color[2]};
-	i = 0;
-	while (i < game->win->screen.height / 2)
+	i = 0; 
+	while (i < game->center_y)
 	{
-		ratio = (double)(game->win->screen.height - i) / (double)game->win->screen.height;
+		ratio = (double)(SCREEN_HEIGHT - i) / (double)SCREEN_HEIGHT;
 		shade = (t_rgb){.r = base.r * ratio, .g = base.g * ratio,
 			.b = base.b * ratio};
 		rec.pos.y = i;
@@ -99,15 +98,15 @@ void	draw_floor(t_game *game)
 	int			i;
 
 	rec = (t_rectangle){
-		.width = game->win->screen.width,
+		.width = SCREEN_WIDTH,
 		.height = 1
 	};
 	base = (t_rgb){.r = game->floor_color[0], .g = game->floor_color[1],
 		.b = game->floor_color[2]};
-	i = game->win->screen.height;
-	while (i > game->win->screen.height / 2)
+	i = SCREEN_HEIGHT;
+	while (i > game->center_y)
 	{
-		ratio = (double)i / (double)game->win->screen.height;
+		ratio = (double)i / (double)SCREEN_HEIGHT;
 		shade = (t_rgb){.r = base.r * ratio, .g = base.g * ratio,
 			.b = base.b * ratio};
 		rec.pos.y = i;
@@ -119,23 +118,8 @@ void	draw_floor(t_game *game)
 
 void	render_game(t_game *game)
 {
-//	t_rectangle	rec;
-//	t_rgb		color;
-
-// 	rec = (t_rectangle){
-// 		.width = game->win->screen.width,
-// 		.height = game->win->screen.height / 2,
-// 	};
-//	color = (t_rgb){.r = game->ceiling_color[0], .g = game->ceiling_color[1],
-//		.b = game->ceiling_color[2]};
-//	fill_rectangle(&game->win->screen,
-//		&rec, color.val);
-// 	color = (t_rgb){.r = game->floor_color[0], .g = game->floor_color[1],
-// 		.b = game->floor_color[2]};
-// 	rec.pos.y = game->win->screen.height / 2;
-// 	fill_rectangle(&game->win->screen,
-// 		&rec, color.val);
 	draw_ceiling(game);
 	draw_floor(game);
 	draw_scene(game);
+	draw_vignette(game);
 }

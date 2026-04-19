@@ -6,7 +6,7 @@
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 14:00:51 by nmunari           #+#    #+#             */
-/*   Updated: 2026/04/19 02:28:18 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/19 13:51:49 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,11 @@ typedef struct s_game
 	int				ceiling_color[3];
 	char			**map;
 	t_player		player;
-	int				screen_width;
-	int				screen_height;
 	double			fov_half;
 	double			fov_step;
+	int				center_x;
+	int				center_y;
+	float			vignette[SCREEN_WIDTH * SCREEN_HEIGHT];
 }	t_game;
 
 # define STEP_SPEED		150.0
@@ -63,5 +64,7 @@ t_point	render_minimap(t_game *g, t_point p, double scale);
 void	render_game(t_game *g);
 int		render(t_window *w);
 void	render_playground(t_game *g);
+int		compute_vignette(t_game *g);
+void	draw_vignette(t_game *g);
 
 #endif

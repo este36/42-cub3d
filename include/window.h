@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 12:21:31 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/18 01:07:45 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/19 13:51:20 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 # include "image.h"
 # include "libft.h"
+
+# define SCREEN_WIDTH	800
+# define SCREEN_HEIGHT	600
 
 typedef struct s_window		t_window;
 typedef struct s_textbox	t_textbox;
