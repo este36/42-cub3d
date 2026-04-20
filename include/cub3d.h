@@ -6,7 +6,7 @@
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 14:00:51 by nmunari           #+#    #+#             */
-/*   Updated: 2026/04/20 18:42:13 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/20 18:59:06 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,9 @@ typedef struct s_game
 # define CELL_WIDTH		10
 # define SCALE			2
 # define SENSITIVITY	0.02
-# define KEY_SPEED		2.2
+# define KEY_SPEED		4000.0
 
-void	move_player(t_game *g, t_window *w, float step);
+void	move_player(t_game *g, t_window *w);
 void	init_fov(t_game *game);
 t_point	to_screen(t_vec2 p, t_point origin, t_rectangle cell);
 t_point	render_minimap(t_game *g, t_point p, double scale);
