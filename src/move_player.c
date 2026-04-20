@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/18 20:19:25 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/20 18:30:02 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/20 18:42:07 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ void	update_pos(t_game *g, t_window *w, float step)
 void	move_player(t_game *g, t_window *w, float step)
 {
 	if (w->k_left)
-		g->player.dir = vec2_rot(g->player.dir, -SENSITIVITY * 2.2);
+		g->player.dir = vec2_rot(g->player.dir, -SENSITIVITY * KEY_SPEED);
 	if (w->k_right)
-		g->player.dir = vec2_rot(g->player.dir, SENSITIVITY * 2.2);
+		g->player.dir = vec2_rot(g->player.dir, SENSITIVITY * KEY_SPEED);
 	update_pos(g, w, step);
 }

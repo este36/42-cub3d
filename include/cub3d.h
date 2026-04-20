@@ -6,7 +6,7 @@
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 14:00:51 by nmunari           #+#    #+#             */
-/*   Updated: 2026/04/20 18:30:28 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/20 18:42:13 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct s_game
 # define CELL_WIDTH		10
 # define SCALE			2
 # define SENSITIVITY	0.02
+# define KEY_SPEED		2.2
 
 void	move_player(t_game *g, t_window *w, float step);
 void	init_fov(t_game *game);
