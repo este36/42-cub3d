@@ -6,7 +6,7 @@
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 14:00:51 by nmunari           #+#    #+#             */
-/*   Updated: 2026/04/19 13:51:49 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/20 12:39:38 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,6 @@ int		render(t_window *w);
 void	render_playground(t_game *g);
 int		compute_vignette(t_game *g);
 void	draw_vignette(t_game *g);
+void	draw_scene(t_game *g);
 
 #endif
