@@ -48,6 +48,7 @@ SRCS			= \
 				  src/playground/render_minimap.c\
 				  src/game/render.c\
 				  src/game/vignette.c\
+				  src/game/draw_scene.c\
 				  src/render.c\
 				  src/move_player.c\
 

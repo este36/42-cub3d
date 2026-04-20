@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 19:02:47 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/19 13:48:31 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/20 12:44:35 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,9 @@ int	main(int argc, char **argv)
 	ft_bzero(&window, sizeof(window));
 	window.user_data = &game;
 	game.win = &window;
-	game.player.dir = (t_vec2){0.0, -1.0};
+	game.player.dir = (t_vec2){cos(game.player.angle), sin(game.player.angle)};
+	printf("player.pos: {%f, %f}\n", game.player.pos.x, game.player.pos.y);
+	printf("player.dir: {%f, %f}\n", game.player.dir.x, game.player.dir.y);
 	init_window(&window);
 	create_window(&window);
 	init_fov(&game);
@@ -75,6 +77,5 @@ int	main(int argc, char **argv)
 		return (1);
 	show_window(&window);
 	destroy_window(&window);
-	// free(game.vignette);
 	return (0);
 }
