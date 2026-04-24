@@ -14,12 +14,12 @@ SRCS_PARSING	= src/parsing/parse_cub.c\
 				  src/parsing/utils_cub.c\
 				  src/parsing/check_textures.c\
 				  src/parsing/parse_textures.c\
+				  src/parsing/parse_elements.c\
 				  src/parsing/check_colors.c\
 				  src/parsing/parse_colors.c\
 				  src/parsing/parse_map.c\
 				  src/parsing/check_player.c\
 				  src/parsing/check_walls.c\
-				  src/parsing/init_game.c\
 				  src/parsing/tester_cub.c
 
 SRCS			= \
@@ -46,6 +46,7 @@ SRCS			= \
 				  src/raycaster.c\
 				  src/playground/render.c\
 				  src/playground/render_minimap.c\
+				  src/game/utils.c\
 				  src/game/render.c\
 				  src/game/vignette.c\
 				  src/game/draw_scene.c\

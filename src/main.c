@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 19:02:47 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/24 12:57:38 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/24 13:54:48 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ int	main(int argc, char **argv)
 	if (compute_vignette(&game) != 0)
 		return (1);
 	show_window(&window);
+	free_game_data(&game);
 	destroy_window(&window);
 	return (0);
 }

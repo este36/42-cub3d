@@ -6,7 +6,7 @@
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 18:00:44 by nmunari           #+#    #+#             */
-/*   Updated: 2026/04/24 12:54:15 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/24 13:46:33 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int	parse_texture(t_game *data, char *line, t_type type)
 		free(path);
 		return (0);
 	}
+	printf("%d\n", tex);
 	if (load_xpm_image(data->win->mlx, &data->textures[tex], path) != 0)
 	{
 		printf("Error\nFailed to load xpm image. [path=%s]\n", path);

@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/11 16:18:55 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/16 18:38:25 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/24 13:33:28 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int		check_cub(char **cub);
 char	**get_cub(char *filename);
 int		check_texture(char *path);
 int		parse_texture(t_game *data, char *line, t_type type);
+int		parse_elements(char **cub, t_game *data);
 int		check_color(char *line);
 int		parse_color(t_game *data, char *line, t_type type);
 int		check_player(char **map);
