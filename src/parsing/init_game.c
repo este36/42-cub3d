@@ -6,7 +6,7 @@
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/08 20:24:47 by nmunari           #+#    #+#             */
-/*   Updated: 2026/04/16 18:43:16 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/24 12:31:51 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,6 @@ static int	parse_elements(char **cub, t_game *data)
 
 void	free_game_data(t_game *data)
 {
-	free(data->no_path);
-	free(data->so_path);
-	free(data->we_path);
-	free(data->ea_path);
 	free_tab(data->map);
 }
 

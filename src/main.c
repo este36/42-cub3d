@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 19:02:47 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/20 12:53:47 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/24 12:57:38 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	on_mouse_move(t_point prev, t_point curr, t_window *w)
 
 	game = w->user_data;
 	mouse_delta = curr.x - prev.x;
-	angle = SENSITIVITY * mouse_delta;
+	angle = SENSITIVITY * mouse_delta * w->delta_time * MOUSE_SPEED;
 	game->player.dir = vec2_rot(game->player.dir, angle);
 	return (0);
 }
@@ -61,15 +61,14 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	ft_bzero(&game, sizeof(game));
-	if (!init_game(&game, argv[1]))
-		return (1);
-	print_game_data(&game);
 	ft_bzero(&window, sizeof(window));
 	window.user_data = &game;
 	game.win = &window;
-	game.player.dir = (t_vec2){cos(game.player.angle), sin(game.player.angle)};
 	init_window(&window);
-	create_window(&window);
+	if (create_window(&window) != 0 || !init_game(&game, argv[1]))
+		return (1);
+	game.player.dir = (t_vec2){cos(game.player.angle), sin(game.player.angle)};
+	print_game_data(&game);
 	init_fov(&game);
 	if (compute_vignette(&game) != 0)
 		return (1);

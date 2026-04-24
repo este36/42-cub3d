@@ -6,7 +6,7 @@
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 18:00:44 by nmunari           #+#    #+#             */
-/*   Updated: 2026/04/16 18:42:16 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/24 12:54:15 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,26 @@ static char	*get_texture_path(char *line)
 	return (ft_substr(line, i, len));
 }
 
+static enum e_texture	type_to_texture(t_type type)
+{
+	static const int	lookup[] = {
+	[NORTH] = TEX_NORTH, [SOUTH] = TEX_SOUTH,
+	[WEST] = TEX_WEST, [EAST] = TEX_EAST,
+	};
+
+	if (type != NORTH && type != SOUTH && type != WEST && type != EAST)
+		return (TEX_INVALID);
+	return (lookup[type]);
+}
+
 int	parse_texture(t_game *data, char *line, t_type type)
 {
-	char	*path;
+	char			*path;
+	enum e_texture	tex;
 
+	tex = type_to_texture(type);
+	if (tex == TEX_INVALID)
+		return (1);
 	path = get_texture_path(line);
 	if (!path)
 		return (printf("Error\nMalloc failed for texture path\n"), 0);
@@ -40,14 +56,12 @@ int	parse_texture(t_game *data, char *line, t_type type)
 		free(path);
 		return (0);
 	}
-	if (type == NORTH)
-		data->no_path = path;
-	else if (type == SOUTH)
-		data->so_path = path;
-	else if (type == WEST)
-		data->we_path = path;
-	else if (type == EAST)
-		data->ea_path = path;
+	if (load_xpm_image(data->win->mlx, &data->textures[tex], path) != 0)
+	{
+		printf("Error\nFailed to load xpm image. [path=%s]\n", path);
+		return (0);
+	}
+	free(path);
 	return (1);
 }
 

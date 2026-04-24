@@ -6,7 +6,7 @@
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 14:00:51 by nmunari           #+#    #+#             */
-/*   Updated: 2026/04/20 18:59:06 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/24 13:07:25 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,21 @@ enum e_mode
 	MODE_PLAYGROUND,
 };
 
+enum e_texture
+{
+	TEX_NORTH,
+	TEX_SOUTH,
+	TEX_WEST,
+	TEX_EAST,
+	__TEXTURES_COUNT,
+	TEX_INVALID
+};
+
 typedef struct s_game
 {
 	t_window		*win;
 	enum e_mode		mode;
-	char			*no_path;
-	char			*so_path;
-	char			*we_path;
-	char			*ea_path;
+	t_image			textures[__TEXTURES_COUNT];
 	int				floor_color[3];
 	int				ceiling_color[3];
 	char			**map;
@@ -56,6 +63,7 @@ typedef struct s_game
 # define CELL_WIDTH		10
 # define SCALE			2
 # define SENSITIVITY	0.02
+# define MOUSE_SPEED	3500.0
 # define KEY_SPEED		4000.0
 
 void	move_player(t_game *g, t_window *w);
