@@ -1,46 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_game.c                                        :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/08 20:24:47 by nmunari           #+#    #+#             */
-/*   Updated: 2026/04/24 12:31:51 by emercier         ###   ########.fr       */
+/*   Created: 2026/04/24 13:30:48 by emercier          #+#    #+#             */
+/*   Updated: 2026/04/24 13:35:39 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
 #include "cub3d.h"
-
-static int	parse_elements(char **cub, t_game *data)
-{
-	int		i;
-	t_type	type;
-
-	i = 0;
-	while (cub[i])
-	{
-		type = get_element_type(cub[i]);
-		if (type == NORTH || type == SOUTH
-			|| type == WEST || type == EAST)
-		{
-			if (!parse_texture(data, cub[i], type))
-				return (0);
-		}
-		else if (type == FLOOR || type == CEILING)
-		{
-			if (!parse_color(data, cub[i], type))
-				return (0);
-		}
-		i++;
-	}
-	return (1);
-}
+#include "parsing.h"
+#include "mlx.h"
 
 void	free_game_data(t_game *data)
 {
+	int	i;
+
 	free_tab(data->map);
+	i = 0;
+	while (i < __TEXTURES_COUNT)
+	{
+		mlx_destroy_image(data->textures[i].mlx,
+			data->textures[i].ptr);
+		i++;
+	}
 }
 
 int	init_game(t_game *data, char *filename)
