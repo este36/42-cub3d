@@ -6,12 +6,13 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 19:52:02 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/04 13:54:27 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/16 11:51:37 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "window.h"
 #include <stdarg.h>
+#include <stdio.h>
 #include "ft_printf.h"
 
 bool	inside_textbox(t_point p, t_textbox *t)
@@ -54,24 +55,26 @@ static bool	_alloc(t_textbox *t)
 	return (true);
 }
 
-void	textbox(t_textbox *t, t_point pos, char *fmt, ...)
+t_textbox	textbox(t_point pos, char *fmt, ...)
 {
+	t_textbox	t;
 	static char	buffer[512];
 	va_list		lst;
 
 	va_start(lst, fmt);
-	ft_bzero(t, sizeof(*t));
+	ft_bzero(&t, sizeof(t));
 	ft_bzero(buffer, sizeof(buffer));
-	ft_vsnprintf(buffer, sizeof(buffer), fmt, lst);
+	vsnprintf(buffer, sizeof(buffer), fmt, lst);
 	va_end(lst);
-	t->pos = pos;
-	t->content.buf = buffer;
-	t->content.len = ft_strlen(buffer);
-	if (!_alloc(t))
+	t.pos = pos;
+	t.content.buf = buffer;
+	t.content.len = ft_strlen(buffer);
+	if (!_alloc(&t))
 		ft_panic("%s:%d: no memory left!\n", __FILE__, __LINE__);
-	t->padding_x = 2;
-	t->padding_y = 2;
-	t->bg_color = 0xffffff;
-	t->hover_bg_color = 0xffffff;
-	textbox_calculate_dimensions(t);
+	t.padding_x = 2;
+	t.padding_y = 2;
+	t.bg_color = 0xffffff;
+	t.hover_bg_color = 0xffffff;
+	textbox_calculate_dimensions(&t);
+	return (t);
 }

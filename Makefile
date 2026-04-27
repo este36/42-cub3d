@@ -22,7 +22,9 @@ SRCS_PARSING	= src/parsing/parse_cub.c\
 				  src/parsing/init_game.c\
 				  src/parsing/tester_cub.c
 
-SRCS			= src/main.c\
+SRCS			= \
+				  $(SRCS_PARSING)\
+				  src/main.c\
 				  src/utils.c\
 				  src/window/create_window.c\
 				  src/window/win_init_hooks.c\
@@ -30,6 +32,7 @@ SRCS			= src/main.c\
 				  src/window/destroy_window.c\
 				  src/window/draw_rectangle.c\
 				  src/window/fill_rectangle.c\
+				  src/window/draw_point.c\
 				  src/window/sleep_ms.c\
 				  src/window/draw_text.c\
 				  src/window/draw_line.c\
@@ -40,7 +43,14 @@ SRCS			= src/main.c\
 				  src/window/render_textbox.c\
 				  src/vec2/vec2_ops_1.c\
 				  src/vec2/vec2_ops_2.c\
-				  $(SRCS_PARSING)
+				  src/raycaster.c\
+				  src/playground/render.c\
+				  src/playground/render_minimap.c\
+				  src/game/render.c\
+				  src/game/vignette.c\
+				  src/game/draw_scene.c\
+				  src/render.c\
+				  src/move_player.c\
 
 OBJS=$(SRCS:src/%.c=obj/%.o)
 

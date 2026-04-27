@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 12:21:31 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/04 17:18:51 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/19 13:51:20 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 # include "image.h"
 # include "libft.h"
+
+# define SCREEN_WIDTH	800
+# define SCREEN_HEIGHT	600
 
 typedef struct s_window		t_window;
 typedef struct s_textbox	t_textbox;
@@ -35,7 +38,7 @@ typedef struct s_balloc
 	size_t	capacity;
 }	t_balloc;
 
-void	*balloc(t_balloc *b, size_t size);
+void		*balloc(t_balloc *b, size_t size);
 
 typedef struct s_window
 {
@@ -45,9 +48,11 @@ typedef struct s_window
 	char				*title;
 	bool				should_close;
 	bool				should_render;
+	bool				ignore_mouse;
 	size_t				frame;
 	long				last_frame;
 	int					fps;
+	double				delta_time;
 	t_image				screen;
 	t_color				font_color;
 	t_point				mouse;
@@ -70,16 +75,16 @@ typedef struct s_window
 	uint8_t				keys[256];
 }	t_window;
 
-int		create_window(t_window *w);
-int		show_window(t_window *w);
-void	clear_background(t_window *w, t_color color);
-void	target_fps(double fps);
-int		destroy_window(t_window *w);
+int			create_window(t_window *w);
+int			show_window(t_window *w);
+void		clear_background(t_window *w, t_color color);
+void		target_fps(double fps);
+int			destroy_window(t_window *w);
 
 # define CHAR_HEIGHT	13
 # define CHAR_WIDTH 	6
 
-int		draw_text(t_window *w, int x, int y, const char *text);
+int			draw_text(t_window *w, int x, int y, const char *text);
 
 typedef struct s_textbox
 {
@@ -97,10 +102,10 @@ typedef struct s_textbox
 	t_balloc		*_mem;
 }	t_textbox;
 
-void	add_textbox(t_window *w, t_textbox *t);
-bool	inside_textbox(t_point p, t_textbox *t);
-void	textbox(t_textbox *t, t_point p,
-			char *fmt, ...) __attribute__((format(printf, 3, 4)));
+void		add_textbox(t_window *w, t_textbox *t);
+bool		inside_textbox(t_point p, t_textbox *t);
+t_textbox	textbox(t_point p,
+				char *fmt, ...) __attribute__((format(printf, 2, 3)));
 
 # define LINE_SIZE		50
 # define PADDING		15
@@ -114,6 +119,6 @@ typedef struct s_msgbox
 	t_textbox	ok;
 }	t_msgbox;
 
-int		msgbox(char *fmt, ...) __attribute__((format(printf, 1, 2)));
+int			msgbox(char *fmt, ...) __attribute__((format(printf, 1, 2)));
 
 #endif

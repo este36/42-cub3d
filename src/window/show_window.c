@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 18:22:58 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/04 14:20:00 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/18 00:33:14 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	win_main_loop(t_window *w)
 
 	mlx_mouse_get_pos(w->mlx, w->ptr, &mouse.x, &mouse.y);
 	if (w->on_mousemove && w->frame != 0
-		&& w->mouse.x != mouse.x && w->mouse.y != mouse.y)
+		&& (w->mouse.x != mouse.x || w->mouse.y != mouse.y))
 		w->on_mousemove(w->mouse, mouse, w);
 	w->mouse = mouse;
 	w->main_loop(w);

@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 17:50:39 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/03 21:26:12 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/19 13:51:36 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ int	create_window(t_window *w)
 	}
 	if (w->screen.width == 0 || w->screen.height == 0)
 	{
-		w->screen.width = 800;
-		w->screen.height = 600;
+		w->screen.width = SCREEN_WIDTH;
+		w->screen.height = SCREEN_HEIGHT;
 	}
 	if (!w->title)
 		w->title = "Window Title";

@@ -6,10 +6,11 @@
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/08 20:24:47 by nmunari           #+#    #+#             */
-/*   Updated: 2026/04/08 22:28:25 by nmunari          ###   ########.fr       */
+/*   Updated: 2026/04/16 18:43:16 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "parsing.h"
 #include "cub3d.h"
 
 static int	parse_elements(char **cub, t_game *data)
