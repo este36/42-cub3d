@@ -6,7 +6,7 @@
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 14:00:51 by nmunari           #+#    #+#             */
-/*   Updated: 2026/04/24 13:07:25 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/28 21:57:08 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,18 @@ enum e_texture
 	TEX_INVALID
 };
 
+typedef struct s_texture_splice
+{
+	t_image			*img;
+	t_point			pos;
+	double			y;
+	double			step;
+	int				target_col;
+	int				target_start;
+	int				target_end;
+	int				target_height;
+}	t_texture_splice;
+
 typedef struct s_game
 {
 	t_window		*win;
@@ -51,6 +63,7 @@ typedef struct s_game
 	int				ceiling_color[3];
 	char			**map;
 	t_player		player;
+	double			fov;
 	double			fov_half;
 	double			fov_step;
 	int				center_x;
@@ -58,11 +71,11 @@ typedef struct s_game
 	float			vignette[SCREEN_WIDTH * SCREEN_HEIGHT];
 }	t_game;
 
-# define STEP_SPEED		150.0
+# define STEP_SPEED		2.8
 # define CELL_HEIGHT	10
 # define CELL_WIDTH		10
 # define SCALE			2
-# define SENSITIVITY	0.02
+# define SENSITIVITY	0.0005
 # define MOUSE_SPEED	3500.0
 # define KEY_SPEED		4000.0
 
