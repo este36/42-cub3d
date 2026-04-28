@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/04 13:02:51 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/18 00:36:34 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/28 21:04:03 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	update_fps(t_window *w)
 		delta = now - w->last_frame;
 		if (delta > 0.0)
 			w->fps = (frame_count * 1000.0) / delta;
-		w->delta_time = delta / 1000000.0;
+		w->delta_time = (delta / 1000.0) / frame_count;
 		w->last_frame = now;
 		frame_count = 0;
 	}
