@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 17:50:39 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/19 13:51:36 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/29 18:43:42 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "window_internals.h"
 #include "mlx.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 static int	init_screen(t_window *w)
 {
@@ -46,7 +47,10 @@ int	create_window(t_window *w)
 	{
 		w->mlx = mlx_init();
 		if (!w->mlx)
+		{
+			printf("Error: mlx init failed.\n");
 			return (-1);
+		}
 	}
 	if (w->screen.width == 0 || w->screen.height == 0)
 	{
