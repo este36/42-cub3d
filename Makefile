@@ -5,9 +5,16 @@ PROJECT_DIR		= $(shell pwd)
 LIBFT_DIR		= libft
 LIBFT			= $(LIBFT_DIR)/libft.a
 CFLAGS			= -Wall -Wextra -Werror -g
-INCLUDE			= -I$(LIBFT_DIR)/ft_printf -I$(LIBFT_DIR) -I$(MINILIBX_DIR) -Iinclude
-LDFLAGS			= -lmlx -L$(MINILIBX_DIR) -lXext -lX11 -lm 
-MLX_CFLAGS		= CFLAGS='-O3 --std=gnu89 -g'
+
+ifeq ($(shell uname),Darwin)
+	INCLUDE		= -I$(LIBFT_DIR)/ft_printf -I$(LIBFT_DIR) -I$(MINILIBX_DIR) -Iinclude -I/opt/X11/include
+	LDFLAGS		= -lmlx -L$(MINILIBX_DIR) -L/opt/X11/lib -lX11 -lXext -lm 
+	MLX_CFLAGS	= CFLAGS='-O3 --std=gnu89 -I/opt/X11/include -g'
+else
+	INCLUDE		= -I$(LIBFT_DIR)/ft_printf -I$(LIBFT_DIR) -I$(MINILIBX_DIR) -Iinclude
+	LDFLAGS		= -lmlx -L$(MINILIBX_DIR) -lXext -lX11 -lm 
+	MLX_CFLAGS	= CFLAGS='-O3 --std=gnu89 -g'
+endif
 
 SRCS_PARSING	= src/parsing/parse_cub.c\
 				  src/parsing/check_cub.c\
