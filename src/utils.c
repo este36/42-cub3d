@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 00:55:56 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/18 12:21:38 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/28 19:51:12 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	init_fov(t_game *game)
 {
 	const double	fov = M_PI / 3.0;
 
+	game->fov = fov;
 	game->fov_half = fov * 0.5f;
 	game->fov_step = fov / game->win->screen.width;
 }

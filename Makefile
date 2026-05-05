@@ -5,21 +5,28 @@ PROJECT_DIR		= $(shell pwd)
 LIBFT_DIR		= libft
 LIBFT			= $(LIBFT_DIR)/libft.a
 CFLAGS			= -Wall -Wextra -Werror -g
-INCLUDE			= -I$(LIBFT_DIR)/ft_printf -I$(LIBFT_DIR) -I$(MINILIBX_DIR) -Iinclude
-LDFLAGS			= -lmlx -L$(MINILIBX_DIR) -lXext -lX11 -lm 
-MLX_CFLAGS		= CFLAGS='-O3 --std=gnu89 -g'
+
+ifeq ($(shell uname),Darwin)
+	INCLUDE		= -I$(LIBFT_DIR)/ft_printf -I$(LIBFT_DIR) -I$(MINILIBX_DIR) -Iinclude -I/opt/X11/include
+	LDFLAGS		= -lmlx -L$(MINILIBX_DIR) -L/opt/X11/lib -lX11 -lXext -lm 
+	MLX_CFLAGS	= CFLAGS='-O3 --std=gnu89 -I/opt/X11/include -g'
+else
+	INCLUDE		= -I$(LIBFT_DIR)/ft_printf -I$(LIBFT_DIR) -I$(MINILIBX_DIR) -Iinclude
+	LDFLAGS		= -lmlx -L$(MINILIBX_DIR) -lXext -lX11 -lm 
+	MLX_CFLAGS	= CFLAGS='-O3 --std=gnu89 -g'
+endif
 
 SRCS_PARSING	= src/parsing/parse_cub.c\
 				  src/parsing/check_cub.c\
 				  src/parsing/utils_cub.c\
 				  src/parsing/check_textures.c\
 				  src/parsing/parse_textures.c\
+				  src/parsing/parse_elements.c\
 				  src/parsing/check_colors.c\
 				  src/parsing/parse_colors.c\
 				  src/parsing/parse_map.c\
 				  src/parsing/check_player.c\
 				  src/parsing/check_walls.c\
-				  src/parsing/init_game.c\
 				  src/parsing/tester_cub.c
 
 SRCS			= \
@@ -46,6 +53,7 @@ SRCS			= \
 				  src/raycaster.c\
 				  src/playground/render.c\
 				  src/playground/render_minimap.c\
+				  src/game/utils.c\
 				  src/game/render.c\
 				  src/game/vignette.c\
 				  src/game/draw_scene.c\

@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/16 18:45:00 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/18 21:41:44 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/28 18:44:00 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,12 @@ t_ray	raycast(char **map, t_vec2 ray_start, t_vec2 ray_dir)
 	ray_init_dir(&ray);
 	ray_walk(&ray, map);
 	if (ray.tile_found)
+	{
 		ray.hit = vec2_add(ray.start, vec2_scale(ray.dir, ray.distance));
+		if (!ray.side)
+			ray.wall_pos = ray.hit.y - floor(ray.hit.y);
+		else
+			ray.wall_pos = ray.hit.x - floor(ray.hit.x);
+	}
 	return (ray);
 }

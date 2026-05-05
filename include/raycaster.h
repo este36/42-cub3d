@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/16 18:45:25 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/18 19:41:37 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/28 17:17:58 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct s_ray
 	t_vec2	hit;
 	double	distance;
 	double	perp_distance;
+	double	wall_pos;
 	bool	tile_found;
 	bool	side;
 	t_vec2	_unit_step_size;

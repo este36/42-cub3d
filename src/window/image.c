@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/04 19:27:37 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/19 00:54:59 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/24 13:04:23 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,6 @@ int	load_xpm_image(void *mlx, t_image *img, char *path)
 	img->data = mlx_get_data_addr(img->ptr, &img->bits_pp,
 			&img->line_len, &img->endian);
 	img->bytes_pp = img->bits_pp / 8;
+	img->mlx = mlx;
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 17:02:33 by nmunari           #+#    #+#             */
-/*   Updated: 2026/04/16 18:42:25 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/24 12:21:08 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,6 @@ void	print_game_data(t_game *data)
 	int	i;
 
 	printf("========== GAME DATA ==========\n");
-	printf("  NO : %s\n", data->no_path);
-	printf("  SO : %s\n", data->so_path);
-	printf("  WE : %s\n", data->we_path);
-	printf("  EA : %s\n", data->ea_path);
 	printf("  F  : %d, %d, %d\n", data->floor_color[0],
 		data->floor_color[1], data->floor_color[2]);
 	printf("  C  : %d, %d, %d\n", data->ceiling_color[0],

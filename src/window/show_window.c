@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 18:22:58 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/18 00:33:14 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/28 21:11:28 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ int	show_window(t_window *w)
 	if (w->main_loop == NULL)
 		w->main_loop = win_do_nothing;
 	win_init_hooks(w);
+	w->delta_time = 1.0 / 60.0;
+	w->last_frame = now_ms();
 	mlx_loop(w->mlx);
 	return (0);
 }

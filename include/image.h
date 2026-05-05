@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 17:54:21 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/19 00:54:47 by emercier         ###   ########.fr       */
+/*   Updated: 2026/04/24 13:38:50 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_image
 	void	*mlx;
 	void	*ptr;
 	char	*data;
+	char	*path;
 	int		width;
 	int		height;
 	int		endian;
