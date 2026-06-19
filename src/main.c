@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 19:02:47 by emercier          #+#    #+#             */
-/*   Updated: 2026/06/19 14:34:06 by emercier         ###   ########.fr       */
+/*   Updated: 2026/06/19 14:40:22 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	init_context(t_window *window, t_game *game)
 	return (0);
 }
 
-void destroy_context(t_window *window, t_game *game)
+void	destroy_context(t_window *window, t_game *game)
 {
 	free_game_data(game);
 	destroy_window(window);
