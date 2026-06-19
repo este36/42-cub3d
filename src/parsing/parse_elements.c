@@ -6,7 +6,7 @@
 /*   By: nmunari <nmunari@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/08 20:24:47 by nmunari           #+#    #+#             */
-/*   Updated: 2026/06/19 13:35:26 by emercier         ###   ########.fr       */
+/*   Updated: 2026/06/19 13:38:53 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	free_textures(t_game *game)
 	int	i;
 
 	i = 0;
-	while(i < __TEXTURES_COUNT)
+	while (i < __TEXTURES_COUNT)
 	{
 		if (game->textures[i].ptr)
 			mlx_destroy_image(game->win->mlx, game->textures[i].ptr);
