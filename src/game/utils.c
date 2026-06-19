@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/24 13:30:48 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/24 13:35:39 by emercier         ###   ########.fr       */
+/*   Updated: 2026/06/19 16:56:06 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,11 @@ void	free_game_data(t_game *data)
 	i = 0;
 	while (i < __TEXTURES_COUNT)
 	{
-		mlx_destroy_image(data->textures[i].mlx,
-			data->textures[i].ptr);
+		if (data->textures[i].ptr)
+		{
+			mlx_destroy_image(data->textures[i].mlx, data->textures[i].ptr);
+			ft_bzero(&data->textures[i], sizeof(*data->textures));
+		}
 		i++;
 	}
 }

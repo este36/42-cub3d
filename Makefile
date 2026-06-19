@@ -1,4 +1,4 @@
-NAME			= cub3d
+NAME			= cub3D
 MINILIBX_DIR	= minilibx-linux
 MINILIBX		= $(MINILIBX_DIR)/libmlx.a
 PROJECT_DIR		= $(shell pwd)
@@ -95,6 +95,9 @@ test: $(MINILIBX) $(LIBFT) $(filter-out obj/main.o, $(OBJS))
 
 norm:
 	norminette src include $(LIBFT_DIR) | grep Error || true
+
+run: $(NAME)
+	./$(NAME) maps/good/library.cub
 
 clean:
 	rm -rf obj

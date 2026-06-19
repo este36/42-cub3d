@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/18 12:38:03 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/28 20:46:02 by emercier         ###   ########.fr       */
+/*   Updated: 2026/06/19 12:35:25 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,5 @@ int	render(t_window *w)
 		render_game(g);
 	if (g->mode == MODE_PLAYGROUND)
 		render_playground(g);
-	target_fps(120);
 	return (0);
 }

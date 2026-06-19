@@ -3,5 +3,5 @@ minilibx*
 *.a
 *.out
 *.txt
-cub3d
+cub3D
 test_main

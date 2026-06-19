@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 19:02:47 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/24 13:54:48 by emercier         ###   ########.fr       */
+/*   Updated: 2026/06/19 14:40:22 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,18 +41,32 @@ int	on_mouse_move(t_point prev, t_point curr, t_window *w)
 	return (0);
 }
 
-void	init_window(t_window *window)
+int	init_context(t_window *window, t_game *game)
 {
+	ft_bzero(game, sizeof(*game));
+	ft_bzero(window, sizeof(*window));
+	game->win = window;
+	window->user_data = game;
 	window->title = "cub3d";
 	window->on_keydown = on_key_down;
 	window->on_mousemove = on_mouse_move;
 	window->main_loop = render;
+	window->mlx = mlx_init();
+	if (!window->mlx)
+		return (1);
+	return (0);
+}
+
+void	destroy_context(t_window *window, t_game *game)
+{
+	free_game_data(game);
+	destroy_window(window);
 }
 
 int	main(int argc, char **argv)
 {
-	t_window	window;
 	t_game		game;
+	t_window	window;
 
 	if (argc != 2)
 	{
@@ -60,20 +74,16 @@ int	main(int argc, char **argv)
 		printf("Usage: %s <*.cub path>\n", argv[0]);
 		return (1);
 	}
-	ft_bzero(&game, sizeof(game));
-	ft_bzero(&window, sizeof(window));
-	window.user_data = &game;
-	game.win = &window;
-	init_window(&window);
-	if (create_window(&window) != 0 || !init_game(&game, argv[1]))
-		return (1);
+	if (init_context(&window, &game) != 0 || !init_game(&game, argv[1]))
+		return (destroy_context(&window, &game), 1);
+	if (create_window(&window) != 0)
+		return (destroy_context(&window, &game), 1);
 	game.player.dir = (t_vec2){cos(game.player.angle), sin(game.player.angle)};
 	print_game_data(&game);
 	init_fov(&game);
 	if (compute_vignette(&game) != 0)
-		return (1);
+		return (destroy_context(&window, &game), 1);
 	show_window(&window);
-	free_game_data(&game);
-	destroy_window(&window);
+	destroy_context(&window, &game);
 	return (0);
 }
