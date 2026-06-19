@@ -96,6 +96,9 @@ test: $(MINILIBX) $(LIBFT) $(filter-out obj/main.o, $(OBJS))
 norm:
 	norminette src include $(LIBFT_DIR) | grep Error || true
 
+run: $(NAME)
+	./$(NAME) maps/good/library.cub
+
 clean:
 	rm -rf obj
 
