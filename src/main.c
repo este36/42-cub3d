@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 19:02:47 by emercier          #+#    #+#             */
-/*   Updated: 2026/06/19 12:55:34 by emercier         ###   ########.fr       */
+/*   Updated: 2026/06/19 13:16:28 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ void	init(t_window *window, t_game *game)
 
 int	main(int argc, char **argv)
 {
-	t_game			game;
-	t_window		window;
+	t_game		game;
+	t_window	window;
 
 	if (argc != 2)
 	{
@@ -69,7 +69,7 @@ int	main(int argc, char **argv)
 	}
 	init(&window, &game);
 	if (!init_game(&game, argv[1]))
-		return (1);
+		return (destroy_window(&window), 1);
 	if (create_window(&window) != 0)
 		return (1);
 	game.player.dir = (t_vec2){cos(game.player.angle), sin(game.player.angle)};

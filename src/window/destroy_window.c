@@ -6,7 +6,7 @@
 /*   By: emercier <emercier@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 18:35:08 by emercier          #+#    #+#             */
-/*   Updated: 2026/04/03 21:26:38 by emercier         ###   ########.fr       */
+/*   Updated: 2026/06/19 13:14:16 by emercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,12 @@ int	destroy_window(t_window *w)
 		mlx_destroy_display(w->mlx);
 		free(w->mlx);
 		w->mlx = NULL;
-		free(w->_text_queries.arr);
-		free(w->_memchunk.base);
-		free(w->_textboxes.arr);
+		if (w->_text_queries.arr)
+			free(w->_text_queries.arr);
+		if (w->_memchunk.base)
+			free(w->_memchunk.base);
+		if (w->_textboxes.arr)
+			free(w->_textboxes.arr);
 	}
 	return (0);
 }
