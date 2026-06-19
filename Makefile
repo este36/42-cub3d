@@ -1,4 +1,4 @@
-NAME			= cub3d
+NAME			= cub3D
 MINILIBX_DIR	= minilibx-linux
 MINILIBX		= $(MINILIBX_DIR)/libmlx.a
 PROJECT_DIR		= $(shell pwd)
